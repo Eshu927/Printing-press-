@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Print Press - Shopian, J&K | Home</title>
+    <!-- FontAwesome CDN for Social Media Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-deep: #05070a;
+            --bg-card: #10141d;
+            --text-main: #e2e8f0;
+            --text-muted: #94a3b8;
+            --accent-gold: #fbbf24;
+            --accent-orange: #f97316;
+            --border-color: rgba(251, 191, 36, 0.2);
+            --card-shadow: 0 10px 30px -10px rgba(0,0,0,0.6);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: var(--bg-deep); color: var(--text-main); overflow-x: hidden; line-height: 1.6; }
+        
+        /* Header & Navigation */
+        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; background-color: rgba(5, 7, 10, 0.95); box-shadow: 0 4px 20px rgba(0,0,0,0.5); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(10px); border-bottom: 1px solid var(--border-color); }
+        
+        /* Animated Color Changing Logo */
+        .logo { font-weight: 800; font-size: 28px; letter-spacing: 1.5px; text-transform: uppercase; animation: colorChange 6s infinite; }
+        @keyframes colorChange {
+            0% { color: var(--accent-gold); }
+            33% { color: #38bdf8; }
+            66% { color: #f97316; }
+            100% { color: var(--accent-gold); }
+        }
+        .logo span { color: #ffffff; }
+
+        .header-right { display: flex; align-items: center; gap: 20px; }
+        
+        .menu-icon { font-size: 18px; cursor: pointer; color: var(--text-main); background: var(--bg-card); padding: 10px 20px; border-radius: 30px; border: 1px solid var(--accent-gold); font-weight: 600; transition: all 0.3s ease; display: flex; align-items: center; gap: 8px; animation: menuGlow 4s infinite; }
+        @keyframes menuGlow {
+            0% { border-color: var(--accent-gold); box-shadow: 0 0 10px rgba(251,191,36,0.3); }
+            33% { border-color: #38bdf8; box-shadow: 0 0 15px rgba(56,189,248,0.4); }
+            66% { border-color: var(--accent-orange); box-shadow: 0 0 15px rgba(249,115,22,0.4); }
+            100% { border-color: var(--accent-gold); box-shadow: 0 0 10px rgba(251,191,36,0.3); }
+        }
+        .menu-icon:hover { background: var(--accent-gold); color: var(--bg-deep); transform: translateY(-2px); box-shadow: 0 5px 20px rgba(251,191,36,0.5); }
+
+        /* Multi-Color Glowing Quick Menu Box */
+        nav#nav-menu { display: none; flex-direction: column; position: absolute; top: 85px; right: 40px; background-color: var(--bg-card); min-width: 250px; border-radius: 15px; padding: 15px 0; box-shadow: 0 20px 40px rgba(0,0,0,0.8); border: 2px solid var(--accent-gold); z-index: 2000; opacity: 0; transform: translateY(-10px); transition: opacity 0.4s ease, transform 0.4s ease; animation: boxMultiGlow 6s infinite; }
+        @keyframes boxMultiGlow {
+            0% { border-color: var(--accent-gold); box-shadow: 0 0 20px rgba(251,191,36,0.4); }
+            33% { border-color: #38bdf8; box-shadow: 0 0 25px rgba(56,189,248,0.5); }
+            66% { border-color: var(--accent-orange); box-shadow: 0 0 25px rgba(249,115,22,0.5); }
+            100% { border-color: var(--accent-gold); box-shadow: 0 0 20px rgba(251,191,36,0.4); }
+        }
+
+        nav#nav-menu.active { display: flex; opacity: 1; transform: translateY(0); }
+        nav#nav-menu a:nth-child(1) { background: rgba(251, 191, 36, 0.15); }
+        nav#nav-menu a:nth-child(2) { background: rgba(56, 189, 248, 0.15); }
+        nav#nav-menu a:nth-child(3) { background: rgba(249, 115, 22, 0.15); }
+        nav#nav-menu a:nth-child(4) { background: rgba(168, 85, 247, 0.15); }
+        nav#nav-menu a:nth-child(5) { background: rgba(236, 72, 153, 0.15); }
+        nav#nav-menu a:nth-child(6) { background: rgba(34, 197, 94, 0.15); }
+        nav#nav-menu a:nth-child(7) { background: rgba(20, 184, 166, 0.15); }
+        nav#nav-menu a:nth-child(8) { background: rgba(244, 63, 94, 0.15); }
+        nav#nav-menu a:nth-child(9) { background: rgba(234, 179, 8, 0.15); }
+        nav#nav-menu a:nth-child(10) { background: rgba(99, 102, 241, 0.15); }
+
+        nav#nav-menu a { color: var(--text-main); text-decoration: none; padding: 12px 25px; font-weight: 600; font-size: 15px; transition: all 0.3s ease; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid rgba(255,255,255,0.03); }
+        nav#nav-menu a:last-child { border-bottom: none; }
+        nav#nav-menu a:hover { background: rgba(251, 191, 36, 0.1); color: var(--accent-gold); padding-left: 30px; }
+
+        /* Continuous Animated Banner */
+        .attention-banner { background: linear-gradient(-45deg, #05070a, var(--accent-gold), var(--accent-orange), #05070a); background-size: 400% 400%; color: #ffffff; padding: 15px 30px; text-align: center; font-weight: 700; font-size: 16px; animation: gradientBG 10s ease infinite; cursor: pointer; border-bottom: 2px solid #ffffff; letter-spacing: 0.5px; text-transform: uppercase; }
+        @keyframes gradientBG { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+
+        /* Hero Section with Sky Blue Background & Continuous Moving Bubble Animation */
+        .hero { position: relative; background: linear-gradient(135deg, #0284c7, #0369a1, #38bdf8); padding: 100px 20px; text-align: center; border-bottom: 2px solid var(--border-color); overflow: hidden; animation: heroEntrance 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+        @keyframes heroEntrance {
+            0% { opacity: 0; transform: translateY(-30px) scale(0.98); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .hero-bg-anim { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: 
+            radial-gradient(rgba(255, 255, 255, 0.4) 4px, transparent 4px),
+            radial-gradient(rgba(251, 191, 36, 0.3) 6px, transparent 6px);
+            background-size: 120px 120px, 180px 180px;
+            animation: heroAnimMove 15s linear infinite; pointer-events: none; z-index: 1; }
+        @keyframes heroAnimMove { 0% { background-position: 0 0, 0 0; } 100% { background-position: 240px 240px, 360px 360px; } }
+
+        .hero > * { position: relative; z-index: 2; }
+        .hero h1 { font-size: 42px; margin-bottom: 15px; color: #ffffff; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; text-shadow: 0 3px 10px rgba(0,0,0,0.4); }
+        .hero h1 span { color: var(--accent-gold); }
+        .hero p { font-size: 18px; color: #f1f5f9; max-width: 800px; margin: 0 auto 30px; line-height: 1.6; text-shadow: 0 2px 6px rgba(0,0,0,0.4); }
+        .hero-btns { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        .btn-primary { background-color: var(--accent-gold); color: var(--bg-deep); padding: 12px 30px; border-radius: 30px; font-weight: 700; text-decoration: none; transition: all 0.3s ease; box-shadow: 0 5px 20px rgba(251,191,36,0.4); }
+        .btn-primary:hover { background-color: #ffffff; transform: translateY(-3px); box-shadow: 0 8px 25px rgba(251,191,36,0.6); }
+        .btn-secondary { background: transparent; color: #ffffff; border: 2px solid rgba(255,255,255,0.4); padding: 10px 28px; border-radius: 30px; font-weight: 700; text-decoration: none; transition: all 0.3s ease; }
+        .btn-secondary:hover { border-color: var(--accent-gold); color: var(--accent-gold); transform: translateY(-3px); }
+
+        /* Improved Card Backgrounds for Sections */
+        .instagram-section { background: linear-gradient(145deg, #131b2e, #0b101b); border: 1px solid var(--border-color); max-width: 600px; margin: 50px auto; padding: 30px; border-radius: 20px; text-align: center; box-shadow: var(--card-shadow); cursor: pointer; transition: all 0.4s ease; }
+        .instagram-section:hover { transform: translateY(-5px); border-color: var(--accent-gold); box-shadow: 0 20px 40px rgba(251, 191, 36, 0.2); }
+        .ig-header { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 10px; }
+        .ig-icon { width: 35px; height: 35px; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.5)); }
+        .instagram-section h2 { font-size: 24px; color: #ffffff; font-weight: 800; }
+        .instagram-section h2 span { color: var(--accent-gold); }
+        .instagram-section p { color: var(--text-muted); font-size: 14px; margin-bottom: 20px; }
+        .social-link-btn { display: inline-block; background: linear-gradient(45deg, #f09433, #e6683c, #dc2743); color: #ffffff; padding: 10px 25px; border-radius: 25px; font-weight: 700; font-size: 14px; text-decoration: none; transition: transform 0.3s; box-shadow: 0 4px 15px rgba(220,39,67,0.4); }
+        .social-link-btn:hover { transform: scale(1.05); }
+
+        /* Leadership Section */
+        .leadership-section { max-width: 1100px; margin: 60px auto; padding: 0 20px; }
+        .leadership-section h2 { text-align: center; font-size: 32px; color: #ffffff; margin-bottom: 10px; font-weight: 800; text-transform: uppercase; }
+        .leadership-section h2 span { color: var(--accent-gold); }
+        .leadership-section > p { text-align: center; color: var(--text-muted); font-size: 15px; margin-bottom: 40px; }
+        .leadership-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        
+        /* Leader Card with Improved BG */
+        .leader-card { background: linear-gradient(145deg, #131b2e, #0b101b); border: 1px solid var(--border-color); border-radius: 20px; padding: 30px; text-align: center; box-shadow: var(--card-shadow); transition: all 0.4s ease; cursor: pointer; position: relative; overflow: hidden; }
+        .leader-card:hover { transform: translateY(-6px); border-color: var(--accent-gold); box-shadow: 0 20px 40px rgba(251, 191, 36, 0.2); }
+
+        /* Profile Image Container */
+        .leader-img-box { width: 90px; height: 90px; border-radius: 50%; overflow: hidden; margin: 0 auto 15px; border: 3px solid var(--accent-gold); box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
+        .leader-img-box img { width: 100%; height: 100%; object-fit: cover; }
+
+        .leader-card h3 { color: #ffffff; font-size: 22px; margin-bottom: 5px; font-weight: 700; }
+        .leader-card .role { color: var(--accent-gold); font-size: 12px; font-weight: 700; text-transform: uppercase; margin-bottom: 15px; display: block; letter-spacing: 1px; }
+        .leader-card p { color: var(--text-muted); font-size: 14px; line-height: 1.7; margin-bottom: 25px; text-align: justify; }
+        .social-buttons { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+        .s-btn { background: rgba(251,191,36,0.1); color: var(--accent-gold); border: 1px solid var(--border-color); padding: 8px 18px; border-radius: 20px; font-size: 12px; font-weight: 700; text-decoration: none; transition: all 0.3s ease; }
+        .s-btn:hover { background: var(--accent-gold); color: var(--bg-deep); }
+
+        /* Gallery Section (15 Items) */
+        .gallery-container { max-width: 1300px; margin: 60px auto; padding: 0 20px; }
+        .gallery-container h2 { text-align: center; font-size: 32px; color: #ffffff; margin-bottom: 10px; font-weight: 800; text-transform: uppercase; }
+        .gallery-container h2 span { color: var(--accent-gold); }
+        .gallery-container > p { text-align: center; color: var(--text-muted); font-size: 15px; margin-bottom: 40px; }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+        
+        .gallery-item { background: linear-gradient(145deg, #131b2e, #0b101b); border: 1px solid var(--border-color); border-radius: 15px; overflow: hidden; height: 200px; position: relative; box-shadow: var(--card-shadow); transition: all 0.4s ease; cursor: pointer; }
+        .gallery-item:hover { transform: translateY(-6px); border-color: var(--accent-gold); box-shadow: 0 20px 40px rgba(251, 191, 36, 0.2); }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .gallery-item:hover img { transform: scale(1.1); }
+        .gallery-caption { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(5,7,10,0.95)); padding: 15px 10px 10px; font-size: 13px; font-weight: 700; color: #ffffff; text-align: center; letter-spacing: 0.5px; }
+
+        /* Info Section */
+        .info-section { max-width: 1000px; margin: 60px auto; background: linear-gradient(145deg, #131b2e, #0b101b); border: 1px solid var(--border-color); border-radius: 20px; padding: 45px; box-shadow: var(--card-shadow); cursor: pointer; transition: all 0.4s ease; }
+        .info-section:hover { border-color: var(--accent-gold); transform: translateY(-5px); box-shadow: 0 20px 40px rgba(251, 191, 36, 0.2); }
+        .info-section h2 { color: #ffffff; font-size: 28px; margin-bottom: 20px; text-align: center; font-weight: 800; text-transform: uppercase; }
+        .info-section h2 span { color: var(--accent-gold); }
+        .info-section p { color: var(--text-muted); font-size: 15px; line-height: 1.9; text-align: justify; margin-bottom: 15px; }
+
+        /* Zoom Overlay & Star Sparkle Animation */
+        .zoom-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(5, 7, 10, 0.95); z-index: 9999; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: all 0.5s ease; backdrop-filter: blur(5px); }
+        .zoom-overlay.active { opacity: 1; visibility: visible; }
+
+        .zoomed-card { width: 90%; max-width: 650px; background: var(--bg-card); border: 2px solid var(--accent-gold); border-radius: 25px; padding: 40px; position: relative; transform: scale(0.5); transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); box-shadow: 0 30px 60px rgba(0,0,0,0.9); cursor: zoom-out; max-height: 90vh; overflow-y: auto; }
+        .zoom-overlay.active .zoomed-card { transform: scale(1); }
+        
+        .close-zoom { position: absolute; top: 20px; right: 20px; color: #ffffff; font-size: 30px; cursor: pointer; background: var(--bg-deep); width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid var(--accent-gold); z-index: 10; }
+        .close-zoom:hover { background: var(--accent-gold); color: var(--bg-deep); }
+
+        .star-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; opacity: 0; transition: opacity 0.5s ease; }
+        .zoom-overlay.active .star-container { opacity: 1; }
+
+        .star-container::before, .star-container::after { content: ''; position: absolute; top: 0; left: 0; width: 200%; height: 200%; background-image: 
+            radial-gradient(white 1px, transparent 2%),
+            radial-gradient(white 1px, transparent 2%),
+            radial-gradient(white 2px, transparent 3%),
+            radial-gradient(white 1px, transparent 2%);
+            background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
+            background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
+            animation: starRotate 100s linear infinite; opacity: 0.5; }
+        
+        .star-container::after { background-size: 450px 450px, 250px 250px, 150px 150px, 250px 250px;
+            background-position: 150px 150px, 200px 200px, 280px 280px, 100px 150px;
+            animation: starRotate 60s linear infinite reverse; opacity: 0.3; }
+
+        @keyframes starRotate { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        /* Footer */
+        footer { background: linear-gradient(180deg, var(--bg-card) 0%, var(--bg-deep) 100%); color: var(--text-muted); padding: 60px 40px; text-align: center; font-size: 14px; border-top: 1px solid var(--border-color); margin-top: 80px; }
+        .contact-info p { margin-bottom: 8px; color: #e2e8f0; font-weight: 500; }
+        .contact-info p strong { color: var(--accent-gold); }
+        .footer-nav { margin-top: 20px; display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; }
+        .footer-nav a { color: var(--text-muted); text-decoration: none; font-weight: 600; transition: color 0.3s; }
+        .footer-nav a:hover { color: var(--accent-gold); }
+        .copyright { margin-top: 30px; font-size: 12px; color: var(--text-muted); border-top: 1px solid rgba(251, 191, 36, 0.1); padding-top: 20px; }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">Faizan Printing Press</div>
+        <div class="header-right">
+            <div class="menu-icon" onclick="toggleMenu(event)">☰ Quick Menu</div>
+            <nav id="nav-menu">
+                <a href="index.html">🏠 Home</a>
+                <a href="services.html">⚙️ Services</a>
+                <a href="printing-rate-list.html">📋 Printing Rate List</a>
+                <a href="contact.html">📞 Contact</a>
+                <a href="address.html">📍 Address</a>
+                <a href="about-us.html">ℹ️ About Us</a>
+                <a href="portfolio.html">🎨 Portfolio</a>
+                <a href="products.html">📦 Products</a>
+                <a href="clients.html">🤝 Clients</a>
+                <a href="testimonials.html">⭐ Testimonials</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Attention Banner -->
+    <div class="attention-banner" onclick="toggleMenu(event)">
+        ✨ Welcome to Print Press Shopian | Explore All Our Services & Products! 🚀
+    </div>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="hero-bg-anim"></div>
+        <h1>Welcome to Our Printing <span>Press</span></h1>
+        <p>Your premier destination for high-end offset printing, digital publishing, customized corporate branding, and packaging excellence based in Shopian, Jammu & Kashmir.</p>
+        <div class="hero-btns">
+            <a href="products.html" class="btn-primary">Explore Products</a>
+            <a href="contact.html" class="btn-secondary">Get a Quote</a>
+        </div>
+    </div>
+
+    <!-- Instagram Section -->
+    <div class="instagram-section" onclick="zoomCard(this)">
+        <div class="ig-header">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Instagram Icon" class="ig-icon">
+            <h2><span>Instagram</span> Feed</h2>
+        </div>
+        <p>Follow us and visit our official handle for daily printing updates and new design showcases.</p>
+        <a href="https://www.instagram.com/iam_faixu_313/" target="_blank" class="social-link-btn" onclick="event.stopPropagation()">Follow Us on Instagram</a>
+    </div>
+
+    <!-- Leadership Section -->
+    <div class="leadership-section">
+        <h2>Connect With Our <span>Team</span></h2>
+        <p>Reach out directly or follow our owner and management for professional inquiries and press updates.</p>
+        <div class="leadership-grid">
+            
+            <!-- Owner Profile (Faizan) -->
+            <div class="leader-card" onclick="zoomCard(this)">
+                <div class="leader-img-box">
+                    <img src="idpic/iam_faixu_313_20260924_153316_841.jpg" alt="Faizan - Founder">
+                </div>
+                <h3>Faizan Gulzar</h3>
+                <span class="role">Founder & Owner</span>
+                <p>Leading the printing press operations with a vision for premium quality, modern technology, and absolute customer satisfaction across Shopian and J&K.</p>
+                <div class="social-buttons" onclick="event.stopPropagation()">
+                    <a href="https://www.instagram.com/iam_faixu_313/" target="_blank" class="s-btn">Instagram</a>
+                    <a href="https://www.facebook.com/profile.php?id=100072237319020" target="_blank" class="s-btn" onclick="event.stopPropagation()">Facebook</a>
+                    <a href="https://wa.me/919149762843" target="_blank" class="s-btn" onclick="event.stopPropagation()">WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- Management Desk -->
+            <div class="leader-card" onclick="zoomCard(this)">
+                <div class="leader-img-box">
+                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=200&h=200&fit=crop&crop=faces" alt="Management Desk">
+                </div>
+                <h3>Management Desk</h3>
+                <span class="role">Operations & Support Manager</span>
+                <p>Handling bulk client orders, daily production schedules, shipping logistics, and prompt customer service queries with complete dedication.</p>
+                <div class="social-buttons" onclick="event.stopPropagation()">
+                    <a href="https://instagram.com" target="_blank" class="s-btn">Instagram</a>
+                    <a href="https://facebook.com" target="_blank" class="s-btn" onclick="event.stopPropagation()">Facebook</a>
+                    <a href="https://wa.me/919149762843" target="_blank" class="s-btn" onclick="event.stopPropagation()">WhatsApp</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Gallery Section (15 Printing Press Images) -->
+    <div class="gallery-container">
+        <h2>Inside Our <span>Printing Press</span></h2>
+        <p>A quick visual glimpse into our advanced machinery, production floor, and quality craftsmanship.</p>
+        <div class="gallery-grid">
+            
+            <div class="gallery-item" onclick="zoomCard(this)">
+                <img src="idpic/iam_faixu_313_20260924_153316_841.jpg" alt="Press 1">
+                <div class="gallery-caption">Offset Print Floor</div>
+            </div>
+
+            <div class="gallery-item" onclick="zoomCard(this)">
+                <img src="idpic/iam_faixu_313_20260924_153316_841.jpg" alt="Press 2">
+                <div class="gallery-caption">Foil Stamping Suite</div>
+            </div>
+
+            <div class="gallery-item" onclick="zoomCard(this)">
+                <img src="idpic/iam_faixu_313_20260924_153316_841.jpg" alt="Press 3">
+                <div class="gallery-caption">Book Binding Unit</div>
+            </div>
+
+            <div class="gallery-item" onclick="zoomCard(this)">
+                <img src="idpic/iam_faixu_313_20260924_153316_841.jpg" alt="Press 4">
+                <div class="gallery-caption">Digital Print Setup</div>
+            </div>
+
+            <div class="gallery-item" onclick="zoomCard(this)">
+                <img src="idpic/iam_faixu_313_20260924_153316_841.jpg" alt="Press 5">
+                <div class="gallery-caption">Large Format Printers</div>
+            </div>
+
+            <div class="gallery-item" onclick="zoomCard(this)">
+                <img src="idpic/iam_faixu_313_20260924_153316_841.jpg" alt="Press 6">
+                <div class="gallery-caption">Paper Cutting Division</div>
+            </div>
+
+            <div class="gallery-item" onclick="zoomCard(this)">
+                <img src="idpic/iam_faixu_313_20260924_153316_841.jpg" alt="Press 7">
+                <div class="gallery-caption">Lamination & Finishing</div>
+            </div>
+
+            <div class="gallery-item" onclick="zoomCard(this)">
+                <img src="idpic/iam_faixu_313_20260924_153316_841.jpg" alt="Press 8">
+                <div class="gallery-caption">Packaging & Boxing</div>
+            </div>
+
+            <div class="gallery-item" onclick="zoomCard(this)">
+                <img src="idpic/iam_faixu_313_20260924_153316_841.jpg" alt="Press 9">
+                <div class="gallery-caption">Quality Control Desk</div>
+            </div>
+
+            <div class="gallery-item" onclick="zoomCard(this)">
+                <img src="idpic/iam_faixu_313_20260924_153316_841.jpg" alt="Press 10">
+                <div class="gallery-caption">Dispatch & Delivery</div>
+            </div>
+
+            <div class="gallery-item" onclick="zoomCard(this)">
+                <img src="idpic/iam_faixu_313_20260924_153316_841.jpg" alt="Press 11">
+                <div class="gallery-caption">Cardstock Pressing Line</div>
+            </div>
+
+            <div class="gallery-item" onclick="zoomCard(this)">
+                <img src="idpic/iam_faixu_313_20260924_153316_841.jpg" alt="Press 12">
+                <div class="gallery-caption">Invoice Perforation Station</div>
+            </div>
+
+            <div class="gallery-item" onclick="zoomCard(this)">
+                <img src="idpic/iam_faixu_313_20260924_153316_841.jpg" alt="Press 13">
+                <div class="gallery-caption">Wedding Card Laser Suite</div>
+            </div>
+
+            <div class="gallery-item" onclick="zoomCard(this)">
+                <img src="idpic/iam_faixu_313_20260924_153316_841.jpg" alt="Press 14">
+                <div class="gallery-caption">Retail Bag Assembly</div>
+            </div>
+
+            <div class="gallery-item" onclick="zoomCard(this)">
+                <img src="idpic/iam_faixu_313_20260924_153316_841.jpg" alt="Press 15">
+                <div class="gallery-caption">Hardbound Diary Studio</div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Info Section -->
+    <div class="info-section" onclick="zoomCard(this)">
+        <h2>About Our <span>Printing Press</span></h2>
+        <p>
+            Welcome to our professional printing press. We offer a wide range of services to meet all your personal and business needs. Our expertise includes high-quality offset printing for large volumes and precise digital printing for quick turnarounds.
+        </p>
+        <p>
+            Our bindery services ensure your products have a flawless finish, including cutting, laminating, and coil binding. We also produce large format banners, posters, and signs that make your brand stand out.
+        </p>
+        <p>
+            We pride ourselves on using sustainable materials and maintaining eco-friendly practices throughout our production process. Partner with us for reliable, efficient, and cost-effective printing solutions.
+        </p>
+    </div>
+
+    <!-- Zoom Overlay Structure -->
+    <div class="zoom-overlay" id="zoomOverlay" onclick="closeZoom(event)">
+        <div class="zoomed-card" id="zoomedCard">
+            <div class="star-container"></div>
+            <div class="close-zoom" onclick="closeZoomDirect()">×</div>
+            <div id="zoomedContent"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="contact-info">
+            <p>📧 <strong>Email:</strong> faizan@printpress.com</p>
+            <p>📞 <strong>Phone:</strong> +91 9149762843</p>
+            <p>📍 <strong>Location:</strong> Main Market, Shopian, Jammu & Kashmir</p>
+        </div>
+        <div class="footer-nav">
+            <a href="index.html">🏠 Home</a>
+            <a href="services.html">⚙️ Services</a>
+            <a href="printing-rate-list.html">📋 Printing Rate List</a>
+            <a href="contact.html">📞 Contact</a>
+            <a href="address.html">📍 Address</a>
+        </div>
+        <div class="copyright">
+            <div class="footer-bottom-credit" style="text-align: center; margin-top: 15px; font-size: 13px; color: var(--text-muted);">
+                Designed by <a href="[Aapka-Portfolio-Link]" target="_blank" style="color: var(--accent-gold); text-decoration: none; font-weight: 600;">[ISHTIYAQ GULZAR]</a> | 
+                <span class="social-icons" style="margin-left: 10px; display: inline-flex; gap: 15px; vertical-align: middle;">
+                    <a href="https://www.instagram.com/jaani_927/" target="_blank" title="Instagram" style="color: var(--text-main); font-size: 16px; text-decoration: none; transition: color 0.3s;"><i class="fab fa-instagram"></i> Instagram</a>
+                    <a href="https://www.facebook.com/bhat.ishtiyaq.737" target="_blank" title="Facebook" style="color: var(--text-main); font-size: 16px; text-decoration: none; transition: color 0.3s;"><i class="fab fa-facebook"></i> Facebook</a>
+                    <a href="https://wa.me/9149604818" target="_blank" title="WhatsApp" style="color: var(--text-main); font-size: 16px; text-decoration: none; transition: color 0.3s;"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                </span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu(event) {
+            event.stopPropagation();
+            var menu = document.getElementById("nav-menu");
+            menu.classList.toggle("active");
+        }
+
+        function zoomCard(cardElement) {
+            var overlay = document.getElementById("zoomOverlay");
+            var contentDiv = document.getElementById("zoomedContent");
+            contentDiv.innerHTML = cardElement.innerHTML;
+            overlay.classList.add("active");
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeZoomDirect() {
+            var overlay = document.getElementById("zoomOverlay");
+            overlay.classList.remove("active");
+            document.body.style.overflow = "auto";
+        }
+
+        function closeZoom(event) {
+            if (event.target.id === "zoomOverlay") {
+                closeZoomDirect();
+            }
+        }
+
+        // Close menu automatically when clicking outside anywhere on the page
+        document.addEventListener("click", function(event) {
+            var menu = document.getElementById("nav-menu");
+            var menuIcon = document.querySelector(".menu-icon");
+            var banner = document.querySelector(".attention-banner");
+            
+            if (menu.classList.contains("active")) {
+                if (!menu.contains(event.target) && event.target !== menuIcon && event.target !== banner) {
+                    menu.classList.remove("active");
+                }
+            }
+        });
+    </script>
+</body>
+</html>

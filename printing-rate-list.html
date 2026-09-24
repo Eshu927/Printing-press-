@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Print Press - Master Printing Rate List</title>
+    <!-- FontAwesome CDN for Social Media Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-deep: #05070a;
+            --bg-card: #10141d;
+            --text-main: #e2e8f0;
+            --text-muted: #94a3b8;
+            --accent-gold: #fbbf24;
+            --accent-orange: #f97316;
+            --border-color: rgba(251, 191, 36, 0.2);
+            --card-shadow: 0 10px 30px -10px rgba(0,0,0,0.6);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: var(--bg-deep); color: var(--text-main); overflow-x: hidden; line-height: 1.6; }
+        
+        /* Header & Navigation */
+        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; background-color: rgba(5, 7, 10, 0.95); box-shadow: 0 4px 20px rgba(0,0,0,0.5); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(10px); border-bottom: 1px solid var(--border-color); }
+        
+        /* Animated Color Changing Logo */
+        .logo { font-weight: 800; font-size: 28px; letter-spacing: 1.5px; text-transform: uppercase; animation: colorChange 6s infinite; }
+        @keyframes colorChange {
+            0% { color: var(--accent-gold); }
+            33% { color: #38bdf8; }
+            66% { color: #f97316; }
+            100% { color: var(--accent-gold); }
+        }
+        .logo span { color: #ffffff; }
+
+        .header-right { display: flex; align-items: center; gap: 20px; }
+        
+        /* Animated Color Changing Quick Menu Icon */
+        .menu-icon { font-size: 18px; cursor: pointer; color: var(--text-main); background: var(--bg-card); padding: 10px 20px; border-radius: 30px; border: 2px solid var(--accent-gold); font-weight: 600; transition: all 0.3s ease; display: flex; align-items: center; gap: 8px; animation: menuIconGlow 5s infinite; }
+        @keyframes menuIconGlow {
+            0% { border-color: var(--accent-gold); box-shadow: 0 0 10px rgba(251,191,36,0.3); }
+            33% { border-color: #38bdf8; box-shadow: 0 0 15px rgba(56,189,248,0.4); }
+            66% { border-color: var(--accent-orange); box-shadow: 0 0 15px rgba(249,115,22,0.4); }
+            100% { border-color: var(--accent-gold); box-shadow: 0 0 10px rgba(251,191,36,0.3); }
+        }
+        .menu-icon:hover { background: var(--accent-gold); color: var(--bg-deep); transform: translateY(-2px); box-shadow: 0 5px 15px rgba(251,191,36,0.3); }
+
+        /* Animated Color Changing Quick Menu Box Border */
+        nav#nav-menu { display: none; flex-direction: column; position: absolute; top: 85px; right: 40px; background-color: var(--bg-card); min-width: 250px; border-radius: 15px; padding: 15px 0; box-shadow: 0 20px 40px rgba(0,0,0,0.8); border: 2px solid var(--accent-gold); z-index: 2000; opacity: 0; transform: translateY(-10px); transition: opacity 0.4s ease, transform 0.4s ease; animation: boxBorderGlow 6s infinite; }
+        @keyframes boxBorderGlow {
+            0% { border-color: var(--accent-gold); box-shadow: 0 0 20px rgba(251,191,36,0.4); }
+            33% { border-color: #38bdf8; box-shadow: 0 0 25px rgba(56,189,248,0.5); }
+            66% { border-color: var(--accent-orange); box-shadow: 0 0 25px rgba(249,115,22,0.5); }
+            100% { border-color: var(--accent-gold); box-shadow: 0 0 20px rgba(251,191,36,0.4); }
+        }
+
+        nav#nav-menu.active { display: flex; opacity: 1; transform: translateY(0); }
+        nav#nav-menu a { color: var(--text-main); text-decoration: none; padding: 12px 25px; font-weight: 600; font-size: 15px; transition: all 0.3s ease; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid rgba(255,255,255,0.03); }
+        nav#nav-menu a:last-child { border-bottom: none; }
+        nav#nav-menu a:hover { background: rgba(251, 191, 36, 0.2); color: var(--accent-gold); padding-left: 30px; }
+
+        /* Different Unique Background Colors for Each Quick Menu Item */
+        nav#nav-menu a:nth-child(1) { background: rgba(251, 191, 36, 0.15); }
+        nav#nav-menu a:nth-child(2) { background: rgba(56, 189, 248, 0.15); }
+        nav#nav-menu a:nth-child(3) { background: rgba(249, 115, 22, 0.15); }
+        nav#nav-menu a:nth-child(4) { background: rgba(168, 85, 247, 0.15); }
+        nav#nav-menu a:nth-child(5) { background: rgba(236, 72, 153, 0.15); }
+        nav#nav-menu a:nth-child(6) { background: rgba(34, 197, 94, 0.15); }
+        nav#nav-menu a:nth-child(7) { background: rgba(20, 184, 166, 0.15); }
+        nav#nav-menu a:nth-child(8) { background: rgba(244, 63, 94, 0.15); }
+        nav#nav-menu a:nth-child(9) { background: rgba(234, 179, 8, 0.15); }
+        nav#nav-menu a:nth-child(10) { background: rgba(99, 102, 241, 0.15); }
+
+        /* Continuous Animated Banner */
+        .attention-banner { background: linear-gradient(-45deg, #05070a, var(--accent-gold), var(--accent-orange), #05070a); background-size: 400% 400%; color: #ffffff; padding: 15px 30px; text-align: center; font-weight: 700; font-size: 16px; animation: gradientBG 10s ease infinite; cursor: pointer; border-bottom: 2px solid #ffffff; letter-spacing: 0.5px; text-transform: uppercase; }
+        @keyframes gradientBG { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+
+        /* Rate Hero Banner with Sky Blue Background, Bubble Animation & Entrance Movement */
+        .rate-hero { padding: 90px 20px; text-align: center; position: relative; background: linear-gradient(135deg, #0284c7, #0369a1); border-bottom: 2px solid var(--border-color); overflow: hidden; animation: heroEntrance 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+        @keyframes heroEntrance {
+            0% { opacity: 0; transform: translateY(-30px) scale(0.98); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .bubble-pattern-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: 
+            radial-gradient(rgba(255, 255, 255, 0.35) 4px, transparent 4px),
+            radial-gradient(rgba(251, 191, 36, 0.3) 6px, transparent 6px),
+            radial-gradient(rgba(255, 255, 255, 0.2) 8px, transparent 8px);
+            background-size: 100px 100px, 150px 150px, 200px 200px;
+            background-position: 0 0, 50px 50px, 25px 25px;
+            animation: bubbleDrift 12s linear infinite; pointer-events: none; z-index: 1; }
+
+        @keyframes bubbleDrift { 
+            0% { background-position: 0 0, 50px 50px, 25px 25px; } 
+            100% { background-position: 100px 100px, 150px 150px, 225px 225px; } 
+        }
+
+        .rate-hero > * { position: relative; z-index: 2; }
+        .rate-hero h1 { font-size: 40px; margin-bottom: 15px; color: #ffffff; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; text-shadow: 0 3px 10px rgba(0,0,0,0.5); }
+        .rate-hero h1 span { color: var(--accent-gold); }
+        .rate-hero p { font-size: 18px; color: #f0f9ff; max-width: 700px; margin: 0 auto; line-height: 1.6; text-shadow: 0 2px 6px rgba(0,0,0,0.5); }
+
+        /* Rate List Container & Box Styling */
+        .rate-container { max-width: 1200px; margin: 60px auto; padding: 0 20px; }
+        .rate-section-title { color: var(--accent-gold); font-size: 26px; margin: 40px 0 20px; font-weight: 800; border-bottom: 2px solid var(--border-color); padding-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
+        
+        .rate-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        
+        .rate-box { background: linear-gradient(145deg, #131b2e, #0b101b); border: 1px solid var(--border-color); border-radius: 15px; padding: 25px; box-shadow: var(--card-shadow); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative; overflow: hidden; cursor: pointer; display: flex; flex-direction: column; justify-content: space-between; }
+        .rate-box:hover { transform: translateY(-8px); border-color: var(--accent-gold); box-shadow: 0 15px 35px -10px rgba(251, 191, 36, 0.3); }
+
+        .item-number { position: absolute; top: 15px; right: 20px; font-size: 30px; font-weight: 900; color: var(--accent-gold); opacity: 0.3; transition: opacity 0.3s; }
+        .rate-box:hover .item-number { opacity: 1; }
+
+        .rate-box h3 { color: #ffffff; font-size: 19px; margin-bottom: 10px; font-weight: 700; padding-right: 30px; }
+        .item-price { color: var(--accent-gold); font-size: 20px; font-weight: 800; margin-bottom: 15px; }
+        .rate-box p { color: var(--text-muted); font-size: 13px; line-height: 1.6; text-align: justify; }
+
+        /* Zoom Overlay & Star Sparkle Animation */
+        .zoom-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(5, 7, 10, 0.95); z-index: 9999; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: all 0.5s ease; backdrop-filter: blur(5px); }
+        .zoom-overlay.active { opacity: 1; visibility: visible; }
+
+        .zoomed-card { width: 90%; max-width: 550px; background: var(--bg-card); border: 2px solid var(--accent-gold); border-radius: 25px; padding: 40px; position: relative; transform: scale(0.5); transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); box-shadow: 0 30px 60px rgba(0,0,0,0.9); cursor: zoom-out; max-height: 90vh; overflow-y: auto; }
+        .zoom-overlay.active .zoomed-card { transform: scale(1); }
+        
+        .close-zoom { position: absolute; top: 20px; right: 20px; color: #ffffff; font-size: 30px; cursor: pointer; background: var(--bg-deep); width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid var(--accent-gold); z-index: 10; }
+        .close-zoom:hover { background: var(--accent-gold); color: var(--bg-deep); }
+
+        .star-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; opacity: 0; transition: opacity 0.5s ease; }
+        .zoom-overlay.active .star-container { opacity: 1; }
+
+        .star-container::before, .star-container::after { content: ''; position: absolute; top: 0; left: 0; width: 200%; height: 200%; background-image: 
+            radial-gradient(white 1px, transparent 2%),
+            radial-gradient(white 1px, transparent 2%),
+            radial-gradient(white 2px, transparent 3%),
+            radial-gradient(white 1px, transparent 2%);
+            background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
+            background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
+            animation: starRotate 100s linear infinite; opacity: 0.5; }
+        
+        .star-container::after { background-size: 450px 450px, 250px 250px, 150px 150px, 250px 250px;
+            background-position: 150px 150px, 200px 200px, 280px 280px, 100px 150px;
+            animation: starRotate 60s linear infinite reverse; opacity: 0.3; }
+
+        @keyframes starRotate { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        .zoomed-card .item-number { font-size: 65px; opacity: 0.1; }
+        .zoomed-card h3 { font-size: 26px; padding-right: 40px; }
+        .zoomed-card .item-price { font-size: 24px; margin-bottom: 20px; }
+        .zoomed-card p { font-size: 15px; line-height: 1.8; }
+
+        /* Footer */
+        footer { background: linear-gradient(180deg, var(--bg-card) 0%, var(--bg-deep) 100%); color: var(--text-muted); padding: 60px 40px; text-align: center; font-size: 14px; border-top: 1px solid var(--border-color); margin-top: 80px; }
+        .contact-info p { margin-bottom: 8px; color: #e2e8f0; font-weight: 500; }
+        .contact-info p strong { color: var(--accent-gold); }
+        .footer-nav { margin-top: 20px; display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; }
+        .footer-nav a { color: var(--text-muted); text-decoration: none; font-weight: 600; transition: color 0.3s; }
+        .footer-nav a:hover { color: var(--accent-gold); }
+        .copyright { margin-top: 30px; font-size: 12px; color: var(--text-muted); border-top: 1px solid rgba(251, 191, 36, 0.1); padding-top: 20px; }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">Faizan Printing Press</div>
+        <div class="header-right">
+            <div class="menu-icon" onclick="toggleMenu(event)">☰ Quick Menu</div>
+            <nav id="nav-menu">
+                <a href="index.html">🏠 Home</a>
+                <a href="services.html">⚙️ Services</a>
+                <a href="printing-rate-list.html">📋 Printing Rate List</a>
+                <a href="contact.html">📞 Contact</a>
+                <a href="address.html">📍 Address</a>
+                <a href="about-us.html">ℹ️ About Us</a>
+                <a href="portfolio.html">🎨 Portfolio</a>
+                <a href="products.html">📦 Products</a>
+                <a href="clients.html">🤝 Clients</a>
+                <a href="testimonials.html">⭐ Testimonials</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Attention Banner -->
+    <div class="attention-banner" onclick="toggleMenu(event)">
+        📋 Complete Master Rate List & Transparent Pricing | Click to Open Menu! 🚀
+    </div>
+
+    <!-- Rate Hero -->
+    <div class="rate-hero">
+        <div class="bubble-pattern-bg"></div>
+        <h1>Master Printing <span>Rate List</span></h1>
+        <p>Explore our transparent, cost-effective, and competitive pricing for all offset, digital, and custom finishing services in Shopian, J&K.</p>
+    </div>
+
+    <!-- Rate List Container (60+ Items Boxed Grid) -->
+    <div class="rate-container">
+        
+        <h2 class="rate-section-title">1. Business Cards & Stationery</h2>
+        <div class="rate-grid">
+            <div class="rate-box" onclick="zoomCard(this)">
+                <span class="item-number">01</span>
+                <div>
+                    <h3>Standard Visiting Cards (Matte/Gloss)</h3>
+                    <div class="item-price">₹150 / 100 Pcs</div>
+                    <p>High quality standard business cards printed on 300 GSM thick art card with choice of matte or gloss lamination finish. Perfect for daily professional networking and corporate identity.</p>
+                </div>
+            </div>
+            <div class="rate-box" onclick="zoomCard(this)">
+                <span class="item-number">02</span>
+                <div>
+                    <h3>Spot UV Premium Business Cards</h3>
+                    <div class="item-price">₹350 / 100 Pcs</div>
+                    <p>Luxury visiting cards featuring raised spot UV coating on specific logo or text areas over velvety soft-touch matte lamination. Creates an exceptional tactile and visual impact.</p>
+                </div>
+            </div>
+            <div class="rate-box" onclick="zoomCard(this)">
+                <span class="item-number">03</span>
+                <div>
+                    <h3>Gold/Silver Foil Embossed Cards</h3>
+                    <div class="item-price">₹600 / 100 Pcs</div>
+                    <p>Exclusive executive cards enhanced with hot foil stamping in shining gold or silver metallic shades. Gives a royal, premium finish suited for top management and luxury brands.</p>
+                </div>
+            </div>
+            <div class="rate-box" onclick="zoomCard(this)">
+                <span class="item-number">04</span>
+                <div>
+                    <h3>Corporate Letterheads (A4)</h3>
+                    <div class="item-price">₹400 / 500 Pcs</div>
+                    <p>Professional letterheads printed on premium 100 GSM Maplitho bond paper. Ensures crisp typography, vibrant brand colors, and smooth writing surface for all official documents.</p>
+                </div>
+            </div>
+            <div class="rate-box" onclick="zoomCard(this)">
+                <span class="item-number">05</span>
+                <div>
+                    <h3>Custom Envelopes (Standard DL)</h3>
+                    <div class="item-price">₹500 / 500 Pcs</div>
+                    <p>Custom branded mailing envelopes featuring your company logo, return address, and secure gummed flap. Manufactured using durable 90 GSM sunshine paper for official dispatch.</p>
+                </div>
+            </div>
+            <div class="rate-box" onclick="zoomCard(this)">
+                <span class="item-number">06</span>
+                <div>
+                    <h3>Executive Diary Printing</h3>
+                    <div class="item-price">₹250 / Piece</div>
+                    <p>Hardbound custom planners and year planners with PU leatherette cover, personalized foil stamped name, ribbon bookmark, and ruled premium pages inside.</p>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="rate-section-title">2. Marketing & Promotional Material</h2>
+        <div class="rate-grid">
+            <div class="rate-box" onclick="zoomCard(this)">
+                <span class="item-number">07</span>
+                <div>
+                    <h3>A4 Glossy Promotional Flyers</h3>
+                    <div class="item-price">₹1,200 / 1,000 Pcs</div>
+                    <p>Vibrant single-page promotional leaflets printed on 130 GSM gloss art paper. Ideal for product launches, business promotions, and mass newspaper insertions.</p>
+                </div>
+            </div>
+            <div class="rate-box" onclick="zoomCard(this)">
+                <span class="item-number">08</span>
+                <div>
+                    <h3>Bi-fold / Tri-fold Brochures</h3>
+                    <div class="item-price">₹2,500 / 1,000 Pcs</div>
+                    <p>Professional multi-fold brochures printed on 170 GSM art paper with precise scoring and folding. Perfect for corporate overviews, restaurant menus, and service portfolios.</p>
+                </div>
+            </div>
+            <div class="rate-box" onclick="zoomCard(this)">
+                <span class="item-number">09</span>
+                <div>
+                    <h3>Glossy Paper Posters (A3 Size)</h3>
+                    <div class="item-price">₹15 / Piece</div>
+                    <p>High-resolution colorful posters printed on 200 GSM thick glossy paper. Excellent for wall promotions, event announcements, and retail store displays.</p>
+                </div>
+            </div>
+            <div class="rate-box" onclick="zoomCard(this)">
+                <span class="item-number">10</span>
+                <div>
+                    <h3>Tent Cards for Tables</h3>
+                    <div class="item-price">₹25 / Piece</div>
+                    <p>Sturdy triangle tent cards printed on 300 GSM cardstock with matte lamination. Widely used in restaurants, cafes, hotel desks, and corporate conference tables.</p>
+                </div>
+            </div>
+            <div class="rate-box" onclick="zoomCard(this)">
+                <span class="item-number">11</span>
+                <div>
+                    <h3>Promotional Danglers</h3>
+                    <div class="item-price">₹30 / Piece</div>
+                    <p>Double-sided hanging ceiling danglers die-cut to custom shapes with lamination protection. Excellent eye-catchers for retail supermarkets and promotional exhibitions.</p>
+                </div>
+            </div>
+            <div class="rate-box" onclick="zoomCard(this)">
+                <span class="item-number">12</span>
+                <div>
+                    <h3>Paper Carry Bags (Medium)</h3>
+                    <div class="item-price">₹15 / Piece</div>
+                    <p>Eco-friendly custom shopping carry bags made from 250 GSM kraft/art board with rope handles and reinforced bottom base for retail clothing and gift shops.</p>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="rate-section-title">3. Large Format & Outdoor Advertising</h2>
+        <div class="rate-grid">
+            <div class="rate-box" onclick="zoomCard(this)">
+                <span class="item-number">13</span>
+                <div>
+                    <h3>Standard Flex Banners</h3>
+                    <div class="item-price">₹8 / Sq. Ft.</div>
+                    <p>Weather-resistant outdoor flex banners printed with solvent inks for sharp, bright visibility. Complete with sturdy rope hems and corner eyelets for effortless hanging.</p>
+                </div>
+            </div>
+            <div class="rate-box" onclick="zoomCard(this)">
+                <span class="item-number">14</span>
+                <div>
+                    <h3>Star Flex Premium Banners</h3>
+                    <div class="item-price">₹15 / Sq. Ft.</div>
+                    <p>Heavy-duty smooth star flex material offering superior opacity and clean light reflection. Recommended for high-end hoardings, exhibitions, and grand openings.</p>
+                </div>
+            </div>
+            <div class="rate-box" onclick="zoomCard(this)">
+                <span class="item-number">15</span>
+                <div>
+                    <h3>Self-Adhesive Vinyl Prints</h3>
+                    <div class="item-price">₹22 / Sq. Ft.</div>
+                    <p>High quality gloss/matte vinyl stickers suitable for glass door branding, vehicle wraps, shop windows, and smooth panel applications.</p>
+                </div>
+            </div>
+            <div class="rate-box" onclick="zoomCard(this)">
+                <span class="item-number">16</span>
+                <div>
+                    <h3>One-Way Vision Window Film</h3>
+                    <div class="item-price">₹30 / Sq. Ft.</div>
+                    <p>Perforated window graphics that allow clear visibility from inside while displaying full vibrant promotional branding on the outside glass surface.</p>
+                </div>
+            </div>
+            <div class="rate-box" onclick="zoomCard(this)">
+                <span class="item-number">17</span>
+                <div>
+                    <h3>Roll-up Standee (Retractable)</h3>
+                    <div class="item-price">₹1,200 / Piece</div>
+                    <p>Portable aluminum cassette standee with premium anti-curl banner print. Easy to carry and quick to deploy for corporate events, exhibitions, and seminar lobbies.</p>
+                </div>
+            </div>
+            <div class="rate-box" onclick="zoomCard(this)">
+                <span class="item-number">18</span>
+                <div>
+                    <h3>Backlit Glow Sign Board Print</h3>
+                    <div class="item-price">₹40 / Sq. Ft.</div>
+                    <p>Translucent backlit flex designed specially for glowing lightbox signboards. Delivers even light diffusion and vivid colors during night illumination.</p>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="rate-section-title">4. Books, Registers & Binding Services</h2>
+        <div class="rate-grid">
+            <div class="rate-box" onclick="zoomCard(this)">
+                <span class="item-number">19</span>
+                <div>
+                    <h3>School / Office Notebooks (100 Pgs)</h3>
+                    <div class="item-price">₹30 / Piece</div>
+                    <p>Standard ruled or unruled notebooks with colorful laminated soft cover, strong center pinning, and smooth white writing paper inside.</p>
+                </div>
+            </div>
+            <div class="rate-box" onclick="zoomCard(this)">
+                <span class="item-number">20</span>
+                <div>
+                    <h3>Hardbound Account Registers</h3>
+                    <div class="item-price">₹180 / Piece</div>
+                    <p>Heavy duty ledger and account registers with durable rexine hard cover, section-stitched binding, and high grade ledger paper for long term record keeping.</p>
+                </div>
+            </div>
+            <div class="rate-box" onclick="zoomCard(this)">
+                <span class="item-number">21</span>
+                <div>
+                    <h3>Perfect Binding (Softcover Books)</h3>
+                    <div class="item-price">₹45 / Book</div>
+                    <p>Professional thermal hot-melt glue binding for novels, training manuals, and reports. Gives a clean square spine and robust page retention.</p>
+                </div>
+            </div>
+            <div class="rate-box" onclick="zoomCard(this)">
+                <span class="item-number">22</span>
+                <div>
+                    <h3>Spiral & Wire-O Binding</h3>
+                    <div class="item-price">₹35 / Book</div>
+                    <p>Plastic spiral or metal wire-o binding allowing documents and calendars to open completely flat and rotate 360 degrees with ease.</p>
+                </div>
+            </div>
+            <div class="rate-box" onclick="zoomCard(this)">
+                <span class="item-number">23</span>
+                <div>
+                    <h3>Hardcover Thesis / Project Binding</h3>
+                    <div class="item-price">₹300 / Book</div>
+                    <p>Gold foil embossed hard case binding specifically designed for university dissertations, college engineering projects, and legal submissions.</p>
+                </div>
+            </div>
+            <div class="rate-box" onclick="zoomCard(this)">
+                <span class="item-number">24</span>
+                <div>
+                    <h3>Magazine Saddle Stitching</h3>
+                    <div class="item-price">₹20 / Booklet</div>
+                    <p>Wire-stapled spine binding suitable for thin booklets, monthly magazines, restaurant menus, and promotional catalogs up to 80 pages.</p>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="rate-section-title">5. Bill Books, Receipts & Carbonless Forms</h2>
+        <div class="rate-grid">
+            <div class="rate-box" onclick="zoomCard(this)">
+                <span class="item-number">25</span>
+                <div>
+                    <h3>Cash / Credit Bill Books (1/6 Size)</h3>
+                    <div class="item-price">₹35 / Book</div>
+                    <p>Single color duplicate or triplicate bill books containing 100 pages with serial numbering, perforation, and hard wraparound cover backing.</p>
+                </div>
+            </div>
+            <div class="rate-box" onclick="zoomCard(this)">
+                <span class="item-number">26</span>
+                <div>
+                    <h3>GST Tax Invoice Books (A5 Size)</h3>
+                    <div class="item-price">₹90 / Book</div>
+                    <p>Custom formatted GST compliant invoice books printed on NCR (No Carbon Required) paper for instant multi-copy duplication without messy carbon sheets.</p>
+                </div>
+            </div>
+            <div class="rate-box" onclick="zoomCard(this)">
+                <span class="item-number">27</span>
+                <div>
+                    <h3>Delivery Challan Books</h3>
+                    <div class="item-price">₹80 / Book</div>
+                    <p>Standardized dispatch and delivery challan books featuring company terms, vehicle number space, receiver signature column, and serial tracking.</p>
+                </div>
+            </div>
+            <div class="rate-box" onclick="zoomCard(this)">
+                <span class="item-number">28</span>
+                <div>
+                    <h3>Money Receipt Books</h3>
+                    <div class="item-price">₹40 / Book</div>
+                    <p>Numbered receipt books designed for cash/cheque acknowledgments with perforated tear-off stubs and secure binding.</p>
+                </div>
+            </div>
+            <div class="rate-box" onclick="zoomCard(this)">
+                <span class="item-number">29</span>
+                <div>
+                    <h3>Restaurant KOT Order Pads</h3>
+                    <div class="item-price">₹25 / Pad</div>
+                    <p>Compact kitchen order tickets (KOT) pads designed for fast-paced hotel and restaurant billing operations with clear table number fields.</p>
+                </div>
+            </div>
+            <div class="rate-box" onclick="zoomCard(this)">
+                <span class="item-number">30</span>
+                <div>
+                    <h3>Prescription Pads for Doctors</h3>
+                    <div class="item-price">₹50 / Pad (100 Pgs)</div>
+                    <p>Customized medical prescription pads printed on high grade bond paper featuring doctor qualifications, clinic timing, and logo branding.</p>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="rate-section-title">6. Wedding Cards & Invitation Suites</h2>
+        <div class="rate-grid">
+            <div class="rate-box" onclick="zoomCard(this)">
+                <span class="item-number">31</span>
+                <div>
+                    <h3>Standard Wedding Invitation Cards</h3>
+                    <div class="item-price">₹12 / Piece</div>
+                    <p>Traditional and modern wedding invitation cards printed on textured metallic or matte card stock with matching decorated envelopes.</p>
+                </div>
+            </div>
+            <div class="rate-box" onclick="zoomCard(this)">
+                <span class="item-number">32</span>
+                <div>
+                    <h3>Designer Laser-Cut Wedding Boxes</h3>
+                    <div class="item-price">₹80 / Piece</div>
+                    <p>Luxurious rigid invitation boxes featuring intricate laser-cut patterns, gold foil accents, and compartments for dry fruits or sweets.</p>
+                </div>
+            </div>
+            <div class="rate-box" onclick="zoomCard(this)">
+                <span class="item-number">33</span>
+                <div>
+                    <h3>Acrylic Glass Wedding Cards</h3>
+                    <div class="item-price">₹250 / Piece</div>
+                    <p>Ultra-modern transparent acrylic invitation cards printed with UV gold or white ink, packed in custom velvet-lined gift sleeves.</p>
+                </div>
+            </div>
+            <div class="rate-box" onclick="zoomCard(this)">
+                <span class="item-number">34</span>
+                <div>
+                    <h3>Engagement & Reception Cards</h3>
+                    <div class="item-price">₹15 / Piece</div>
+                    <p>Elegant invitation cards tailored specifically for engagement ceremonies, ring exchange functions, and wedding reception parties.</p>
+                </div>
+            </div>
+            <div class="rate-box" onclick="zoomCard(this)">
+                <span class="item-number">35</span>
+                <div>
+                    <h3>Anniversary & Birthday Invites</h3>
+                    <div class="item-price">₹10 / Piece</div>
+                    <p>Vibrant, customized invitation cards for milestone birthdays, golden/silver jubilees, and anniversary celebrations.</p>
+                </div>
+            </div>
+            <div class="rate-box" onclick="zoomCard(this)">
+                <span class="item-number">36</span>
+                <div>
+                    <h3>Shagun & Envelope Covers</h3>
+                    <div class="item-price">₹5 / Piece</div>
+                    <p>Decorative cash gift envelopes printed with traditional motifs, golden foil borders, and personalized family names.</p>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="rate-section-title">7. Labels, Stickers & Packaging Tags</h2>
+        <div class="rate-grid">
+            <div class="rate-box" onclick="zoomCard(this)">
+                <span class="item-number">37</span>
+                <div>
+                    <h3>Die-Cut Paper Sticker Sheets</h3>
+                    <div class="item-price">₹50 / Sheet (A4)</div>
+                    <p>Peel-and-stick adhesive sticker sheets kiss-cut to circular, square, or custom die shapes for product branding and packaging seals.</p>
+                </div>
+            </div>
+            <div class="rate-box" onclick="zoomCard(this)">
+                <span class="item-number">38</span>
+                <div>
+                    <h3>Waterproof Vinyl Bottle Labels</h3>
+                    <div class="item-price">₹2 / Piece</div>
+                    <p>Glossy waterproof transparent or white vinyl labels designed for juice bottles, cosmetic jars, and food packaging containers.</p>
+                </div>
+            </div>
+            <div class="rate-box" onclick="zoomCard(this)">
+                <span class="item-number">39</span>
+                <div>
+                    <h3>Clothing Hang Tags (Garments)</h3>
+                    <div class="item-price">₹2 / Piece</div>
+                    <p>Thick 350 GSM matte laminated swing tags with punched hole and string option, ideal for apparel brands, boutiques, and retail products.</p>
+                </div>
+            </div>
+            <div class="rate-box" onclick="zoomCard(this)">
+                <span class="item-number">40</span>
+                <div>
+                    <h3>Barcode & QR Code Sticker Rolls</h3>
+                    <div class="item-price">₹0.50 / Label</div>
+                    <p>Thermal barcode and inventory pricing labels compatible with retail scanning systems and warehouse stock tracking.</p>
+                </div>
+            </div>
+            <div class="rate-box" onclick="zoomCard(this)">
+                <span class="item-number">41</span>
+                <div>
+                    <h3>Fragile & Warning Shipping Labels</h3>
+                    <div class="item-price">₹1 / Piece</div>
+                    <p>High-visibility red and white adhesive labels for courier parcels and delicate cargo packaging.</p>
+                </div>
+            </div>
+            <div class="rate-box" onclick="zoomCard(this)">
+                <span class="item-number">42</span>
+                <div>
+                    <h3>Custom Hologram Security Stickers</h3>
+                    <div class="item-price">₹1.50 / Piece</div>
+                    <p>Tamper-evident laser holographic stickers that display authentic brand shimmer and destroy upon peeling to prevent product duplication.</p>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="rate-section-title">8. Certificates, IDs & Institutional Stationery</h2>
+        <div class="rate-grid">
+            <div class="rate-box" onclick="zoomCard(this)">
+                <span class="item-number">43</span>
+                <div>
+                    <h3>School / College ID Cards (PVC)</h3>
+                    <div class="item-price">₹40 / Card</div>
+                    <p>Durable CR80 PVC plastic identity cards featuring high-definition full color photo printing, barcode, and protective lamination.</p>
+                </div>
+            </div>
+            <div class="rate-box" onclick="zoomCard(this)">
+                <span class="item-number">44</span>
+                <div>
+                    <h3>Award Certificates (Thick Card)</h3>
+                    <div class="item-price">₹20 / Piece</div>
+                    <p>Recognition and completion certificates printed on 300 GSM textured parchment or art card with gold foil seal options.</p>
+                </div>
+            </div>
+            <div class="rate-box" onclick="zoomCard(this)">
+                <span class="item-number">45</span>
+                <div>
+                    <h3>Lanyards with Custom Printing</h3>
+                    <div class="item-price">₹50 / Piece</div>
+                    <p>Soft fabric neck lanyards screen-printed with school or corporate brand logo, complete with metal swivel hook and safety clip.</p>
+                </div>
+            </div>
+            <div class="rate-box" onclick="zoomCard(this)">
+                <span class="item-number">46</span>
+                <div>
+                    <h3>Exam Answer Booklet Printing</h3>
+                    <div class="item-price">₹8 / Booklet</div>
+                    <p>Stitched institutional answer sheets with ruled pages, roll number cover fields, and official watermark protection.</p>
+                </div>
+            </div>
+            <div class="rate-box" onclick="zoomCard(this)">
+                <span class="item-number">47</span>
+                <div>
+                    <h3>Visitor Pass Badges</h3>
+                    <div class="item-price">₹15 / Piece</div>
+                    <p>Clip-on or pin-back visitor identification badges designed for corporate offices, seminars, and secure government facilities.</p>
+                </div>
+            </div>
+            <div class="rate-box" onclick="zoomCard(this)">
+                <span class="item-number">48</span>
+                <div>
+                    <h3>Event Entry Wristbands (Tyvek)</h3>
+                    <div class="item-price">₹5 / Piece</div>
+                    <p>Waterproof tear-resistant paper wristbands with sequential numbering for concert admissions, amusement parks, and club events.</p>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="rate-section-title">9. Special Corporate & Gift Printing</h2>
+        <div class="rate-grid">
+            <div class="rate-box" onclick="zoomCard(this)">
+                <span class="item-number">49</span>
+                <div>
+                    <h3>Custom Printed Coffee Mugs</h3>
+                    <div class="item-price">₹150 / Piece</div>
+                    <p>Ceramic white coffee mugs printed with permanent sublimation photo prints, corporate quotes, or personalized anniversary greetings.</p>
+                </div>
+            </div>
+            <div class="rate-box" onclick="zoomCard(this)">
+                <span class="item-number">50</span>
+                <div>
+                    <h3>Corporate T-Shirt Printing</h3>
+                    <div class="item-price">₹250 / Piece</div>
+                    <p>Cotton-blend promotional t-shirts screen printed or heat-pressed with company logo for team events, marathons, and uniform staff wear.</p>
+                </div>
+            </div>
+            <div class="rate-box" onclick="zoomCard(this)">
+                <span class="item-number">51</span>
+                <div>
+                    <h3>Promotional Cap Printing</h3>
+                    <div class="item-price">₹120 / Piece</div>
+                    <p>Adjustable baseball caps embroidered or printed with brand logos for outdoor marketing campaigns and sports teams.</p>
+                </div>
+            </div>
+            <div class="rate-box" onclick="zoomCard(this)">
+                <span class="item-number">52</span>
+                <div>
+                    <h3>Mouse Pads with Wrist Rest</h3>
+                    <div class="item-price">₹100 / Piece</div>
+                    <p>Smooth fabric surface rubber base mouse pads customized with striking corporate artwork and vibrant office branding.</p>
+                </div>
+            </div>
+            <div class="rate-box" onclick="zoomCard(this)">
+                <span class="item-number">53</span>
+                <div>
+                    <h3>Custom Metal Keychains</h3>
+                    <div class="item-price">₹60 / Piece</div>
+                    <p>Engraved or printed metal key rings packaged in gift boxes, ideal for automobile showrooms and real estate promotions.</p>
+                </div>
+            </div>
+            <div class="rate-box" onclick="zoomCard(this)">
+                <span class="item-number">54</span>
+                <div>
+                    <h3>Wall Calendar (12-Page Spiral)</h3>
+                    <div class="item-price">₹120 / Piece</div>
+                    <p>Multi-page monthly wall calendars printed on gloss art paper with metal hanger loop and striking pictorial themes.</p>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="rate-section-title">10. Finishing, Lamination & Special Add-ons</h2>
+        <div class="rate-grid">
+            <div class="rate-box" onclick="zoomCard(this)">
+                <span class="item-number">55</span>
+                <div>
+                    <h3>Glossy Thermal Lamination</h3>
+                    <div class="item-price">₹3 / Sq. Ft.</div>
+                    <p>Crystal clear protective glossy plastic film sealing for sheets, posters, and menus against moisture and handling wear.</p>
+                </div>
+            </div>
+            <div class="rate-box" onclick="zoomCard(this)">
+                <span class="item-number">56</span>
+                <div>
+                    <h3>Matte Velvet Lamination</h3>
+                    <div class="item-price">₹5 / Sq. Ft.</div>
+                    <p>Sophisticated non-reflective soft-touch matte lamination giving a premium luxury feel to book covers and presentation folders.</p>
+                </div>
+            </div>
+            <div class="rate-box" onclick="zoomCard(this)">
+                <span class="item-number">57</span>
+                <div>
+                    <h3>Heavy Paper Creasing & Scoring</h3>
+                    <div class="item-price">₹0.50 / Fold</div>
+                    <p>Precise machine crease lines on thick card stock to ensure clean, crack-free folding on covers and invitation cards.</p>
+                </div>
+            </div>
+            <div class="rate-box" onclick="zoomCard(this)">
+                <span class="item-number">58</span>
+                <div>
+                    <h3>Perforation Cutting Service</h3>
+                    <div class="item-price">₹0.30 / Line</div>
+                    <p>Micro-perforation lines on paper sheets for effortless tear-off counterfoils, ticket coupons, and receipt stubs.</p>
+                </div>
+            </div>
+            <div class="rate-box" onclick="zoomCard(this)">
+                <span class="item-number">59</span>
+                <div>
+                    <h3>Corner Rounding (Radius Cut)</h3>
+                    <div class="item-price">₹0.20 / Corner</div>
+                    <p>Smooth die-punch rounded corners for visiting cards, menus, and ID badges to prevent dog-eared wear and enhance styling.</p>
+                </div>
+            </div>
+            <div class="rate-box" onclick="zoomCard(this)">
+                <span class="item-number">60</span>
+                <div>
+                    <h3>Shrink Film Airtight Packaging</h3>
+                    <div class="item-price">₹2 / Bundle</div>
+                    <p>Professional heat-tunnel shrink wrapping for finished book bundles and printed pads to guarantee dust-free transit delivery.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Zoom Overlay Structure -->
+    <div class="zoom-overlay" id="zoomOverlay" onclick="closeZoom(event)">
+        <div class="zoomed-card" id="zoomedCard">
+            <div class="star-container"></div>
+            <div class="close-zoom" onclick="closeZoomDirect()">×</div>
+            <div id="zoomedContent"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="contact-info">
+            <p>📧 <strong>Email:</strong> faizan@printpress.com</p>
+            <p>📞 <strong>Phone:</strong> +91 9149762843</p>
+            <p>📍 <strong>Location:</strong> Main Market, Shopian, Jammu & Kashmir</p>
+        </div>
+        <div class="footer-nav">
+            <a href="index.html">🏠 Home</a>
+            <a href="services.html">⚙️ Services</a>
+            <a href="printing-rate-list.html">📋 Printing Rate List</a>
+            <a href="contact.html">📞 Contact</a>
+            <a href="address.html">📍 Address</a>
+        </div>
+        <div class="copyright">
+            <div class="footer-bottom-credit" style="text-align: center; margin-top: 15px; font-size: 13px; color: var(--text-muted);">
+                Designed by <a href="[Aapka-Portfolio-Link]" target="_blank" style="color: var(--accent-gold); text-decoration: none; font-weight: 600;">[ISHTIYAQ GULZAR]</a> | 
+                <span class="social-icons" style="margin-left: 10px; display: inline-flex; gap: 15px; vertical-align: middle;">
+                    <a href="https://www.instagram.com/jaani_927/" target="_blank" title="Instagram" style="color: var(--text-main); font-size: 16px; text-decoration: none; transition: color 0.3s;"><i class="fab fa-instagram"></i> Instagram</a>
+                    <a href="https://www.facebook.com/bhat.ishtiyaq.737" target="_blank" title="Facebook" style="color: var(--text-main); font-size: 16px; text-decoration: none; transition: color 0.3s;"><i class="fab fa-facebook"></i> Facebook</a>
+                    <a href="https://wa.me/9149604818" target="_blank" title="WhatsApp" style="color: var(--text-main); font-size: 16px; text-decoration: none; transition: color 0.3s;"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                </span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu(event) {
+            if (event) event.stopPropagation();
+            var menu = document.getElementById("nav-menu");
+            menu.classList.toggle("active");
+        }
+
+        function zoomCard(cardElement) {
+            var overlay = document.getElementById("zoomOverlay");
+            var contentDiv = document.getElementById("zoomedContent");
+            contentDiv.innerHTML = cardElement.innerHTML;
+            overlay.classList.add("active");
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeZoomDirect() {
+            var overlay = document.getElementById("zoomOverlay");
+            overlay.classList.remove("active");
+            document.body.style.overflow = "auto";
+        }
+
+        function closeZoom(event) {
+            if (event.target.id === "zoomOverlay") {
+                closeZoomDirect();
+            }
+        }
+
+        // Close menu automatically when clicking outside anywhere on the page
+        document.addEventListener("click", function(event) {
+            var menu = document.getElementById("nav-menu");
+            var menuIcon = document.querySelector(".menu-icon");
+            var banner = document.querySelector(".attention-banner");
+            
+            if (menu.classList.contains("active")) {
+                if (!menu.contains(event.target) && event.target !== menuIcon && event.target !== banner) {
+                    menu.classList.remove("active");
+                }
+            }
+        });
+    </script>
+</body>
+</html>

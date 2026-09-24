@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Print Press - Our Expert Team</title>
+    <!-- FontAwesome CDN for Social Media Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-deep: #05070a;
+            --bg-card: #10141d;
+            --text-main: #e2e8f0;
+            --text-muted: #94a3b8;
+            --accent-gold: #fbbf24;
+            --accent-orange: #f97316;
+            --border-color: rgba(251, 191, 36, 0.2);
+            --card-shadow: 0 10px 30px -10px rgba(0,0,0,0.6);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: var(--bg-deep); color: var(--text-main); overflow-x: hidden; line-height: 1.6; }
+        
+        /* Header & Navigation */
+        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; background-color: rgba(5, 7, 10, 0.95); box-shadow: 0 4px 20px rgba(0,0,0,0.5); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(10px); border-bottom: 1px solid var(--border-color); }
+        
+        /* Animated Color Changing Logo */
+        .logo { font-weight: 800; font-size: 28px; letter-spacing: 1.5px; text-transform: uppercase; animation: colorChange 6s infinite; }
+        @keyframes colorChange {
+            0% { color: var(--accent-gold); }
+            33% { color: #38bdf8; }
+            66% { color: #f97316; }
+            100% { color: var(--accent-gold); }
+        }
+        .logo span { color: #ffffff; }
+
+        .header-right { display: flex; align-items: center; gap: 20px; }
+        
+        /* Animated Color Changing Quick Menu Icon */
+        .menu-icon { font-size: 18px; cursor: pointer; color: var(--text-main); background: var(--bg-card); padding: 10px 20px; border-radius: 30px; border: 2px solid var(--accent-gold); font-weight: 600; transition:all 0.3s ease; display: flex; align-items: center; gap: 8px; animation: menuIconGlow 5s infinite;}
+        @keyframes menuIconGlow {
+            0% { border-color: var(--accent-gold); box-shadow: 0 0 10px rgba(251,191,36,0.3); }
+            33% { border-color: #38bdf8; box-shadow: 0 0 15px rgba(56,189,248,0.4); }
+            66% { border-color: var(--accent-orange); box-shadow: 0 0 15px rgba(249,115,22,0.4); }
+            100% { border-color: var(--accent-gold); box-shadow: 0 0 10px rgba(251,191,36,0.3); }
+        }
+        .menu-icon:hover { background: var(--accent-gold); color: var(--bg-deep); transform: translateY(-2px); box-shadow: 0 5px 15px rgba(251,191,36,0.3);}
+
+        /* Animated Color Changing Quick Menu Box Border */
+        nav#nav-menu { display: none; flex-direction: column; position: absolute; top: 85px; right: 40px; background-color: var(--bg-card); min-width: 250px; border-radius: 15px; padding: 15px 0; box-shadow: 0 20px 40px rgba(0,0,0,0.8); border: 2px solid var(--accent-gold); z-index: 2000; opacity: 0; transform: translateY(-10px); transition: opacity 0.4s ease, transform 0.4s ease; animation: boxBorderGlow 6s infinite;}
+        @keyframes boxBorderGlow {
+            0% { border-color: var(--accent-gold); box-shadow: 0 0 20px rgba(251,191,36,0.4); }
+            33% { border-color: #38bdf8; box-shadow: 0 0 25px rgba(56,189,248,0.5); }
+            66% { border-color: var(--accent-orange); box-shadow: 0 0 25px rgba(249,115,22,0.5); }
+            100% { border-color: var(--accent-gold); box-shadow: 0 0 20px rgba(251,191,36,0.4); }
+        }
+
+        nav#nav-menu.active { display: flex; opacity: 1; transform: translateY(0); }
+        nav#nav-menu a { color: var(--text-main); text-decoration: none; padding: 12px 25px; font-weight: 600; font-size: 15px; transition: all 0.3s ease; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid rgba(255,255,255,0.03);}
+        nav#nav-menu a:last-child {border-bottom: none;}
+        nav#nav-menu a:hover { background: rgba(251, 191, 36, 0.2); color: var(--accent-gold); padding-left: 30px; }
+
+        /* Different Unique Background Colors for Each Quick Menu Item */
+        nav#nav-menu a:nth-child(1) { background: rgba(251, 191, 36, 0.15); }
+        nav#nav-menu a:nth-child(2) { background: rgba(56, 189, 248, 0.15); }
+        nav#nav-menu a:nth-child(3) { background: rgba(249, 115, 22, 0.15); }
+        nav#nav-menu a:nth-child(4) { background: rgba(168, 85, 247, 0.15); }
+        nav#nav-menu a:nth-child(5) { background: rgba(236, 72, 153, 0.15); }
+        nav#nav-menu a:nth-child(6) { background: rgba(34, 197, 94, 0.15); }
+        nav#nav-menu a:nth-child(7) { background: rgba(20, 184, 166, 0.15); }
+        nav#nav-menu a:nth-child(8) { background: rgba(244, 63, 94, 0.15); }
+        nav#nav-menu a:nth-child(9) { background: rgba(234, 179, 8, 0.15); }
+        nav#nav-menu a:nth-child(10) { background: rgba(99, 102, 241, 0.15); }
+
+        /* Continuous Animated Banner */
+        .attention-banner { background: linear-gradient(-45deg, #05070a, var(--accent-gold), var(--accent-orange), #05070a); background-size: 400% 400%; color: #ffffff; padding: 15px 30px; text-align: center; font-weight: 700; font-size: 16px; animation: gradientBG 10s ease infinite; cursor: pointer; border-bottom: 2px solid #ffffff; letter-spacing: 0.5px; text-transform: uppercase;}
+        @keyframes gradientBG { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+
+        /* Hero Section with Page-Load Movement & Bubble Animation */
+        .hero { padding: 90px 20px; text-align: center; position: relative; background: linear-gradient(135deg, #0284c7, #0369a1); border-bottom: 2px solid var(--border-color); overflow: hidden; animation: heroEntrance 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+        @keyframes heroEntrance {
+            0% { opacity: 0; transform: translateY(-30px) scale(0.98); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        
+        .bubble-pattern-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: 
+            radial-gradient(rgba(255, 255, 255, 0.35) 4px, transparent 4px),
+            radial-gradient(rgba(251, 191, 36, 0.3) 6px, transparent 6px),
+            radial-gradient(rgba(255, 255, 255, 0.2) 8px, transparent 8px);
+            background-size: 100px 100px, 150px 150px, 200px 200px;
+            background-position: 0 0, 50px 50px, 25px 25px;
+            animation: bubbleDrift 12s linear infinite; pointer-events: none; z-index: 1; }
+
+        @keyframes bubbleDrift { 
+            0% { background-position: 0 0, 50px 50px, 25px 25px; } 
+            100% { background-position: 100px 100px, 150px 150px, 225px 225px; } 
+        }
+
+        .hero > * { position: relative; z-index: 2; }
+        .hero h1 { font-size: 45px; margin-bottom: 15px; color: #ffffff; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; text-shadow: 0 3px 10px rgba(0,0,0,0.5); }
+        .hero h1 span { color: var(--accent-gold); }
+        .hero p { font-size: 18px; color: #f0f9ff; max-width: 700px; margin: 0 auto; text-shadow: 0 2px 6px rgba(0,0,0,0.5); }
+
+        /* Article Section (500-600 Words Professional Content) */
+        .article-section { max-width: 1100px; margin: 60px auto; padding: 45px; background: linear-gradient(145deg, #131b2e, #0b101b); border: 1px solid var(--border-color); border-radius: 20px; box-shadow: var(--card-shadow); text-align: left; }
+        .article-section h2 { color: #ffffff; font-size: 30px; margin-bottom: 20px; font-weight: 800; text-transform: uppercase; text-align: center; letter-spacing: 1px; }
+        .article-section h2 span { color: var(--accent-gold); }
+        .article-section h3 { color: var(--accent-gold); font-size: 20px; margin: 25px 0 10px; font-weight: 700; }
+        .article-section p { color: var(--text-muted); font-size: 15px; line-height: 1.9; margin-bottom: 18px; text-align: justify; }
+
+        /* Team Section */
+        .team-section { padding: 60px 20px; background-color: var(--bg-deep); text-align: center; }
+        .team-section h2 { color: #ffffff; font-size: 38px; margin-bottom: 40px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase;}
+        .team-section h2 span {color: var(--accent-gold);}
+        .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; max-width: 1400px; margin: 0 auto; padding: 0 20px; }
+
+        /* Team Card Styling */
+        .team-card { background: linear-gradient(145deg, #131b2e, #0b101b); border: 1px solid var(--border-color); border-radius: 20px; padding: 35px; text-align: left; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative; overflow: hidden; cursor: pointer; box-shadow: var(--card-shadow);}
+        .team-card:hover { transform: translateY(-10px); border-color: var(--accent-gold); box-shadow: 0 20px 40px -10px rgba(251, 191, 36, 0.3); }
+
+        .member-number { position: absolute; top: 20px; right: 25px; font-size: 40px; font-weight: 900; color: var(--accent-gold); opacity: 0.3; z-index: 1; transition: opacity 0.3s ease; }
+        .team-card:hover .member-number { opacity: 1; }
+
+        .card-content { position: relative; z-index: 2; }
+        .team-img { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; margin-bottom: 25px; border: 4px solid var(--bg-deep); display: block; transition: all 0.4s ease; box-shadow: 0 5px 15px rgba(0,0,0,0.3);}
+        .team-card:hover .team-img { transform: scale(1.05); border-color: var(--accent-gold); }
+        
+        .team-card h3 { color: #ffffff; font-size: 22px; margin-bottom: 8px; font-weight: 700; }
+        .team-role { color: var(--accent-gold); font-size: 15px; font-weight: 700; text-transform: uppercase; margin-bottom: 20px; display: block; letter-spacing: 1px;}
+        .team-card p { color: var(--text-muted); font-size: 14px; line-height: 1.8; text-align: justify; margin-bottom: 25px; }
+
+        /* Zoom Overlay & Star Sparkle Animation */
+        .zoom-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(5, 7, 10, 0.95); z-index: 9999; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: all 0.5s ease; backdrop-filter: blur(5px); }
+        .zoom-overlay.active { opacity: 1; visibility: visible; }
+
+        .zoomed-card { width: 90%; max-width: 600px; background: var(--bg-card); border: 2px solid var(--accent-gold); border-radius: 25px; padding: 50px; position: relative; transform: scale(0.5); transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); box-shadow: 0 30px 60px rgba(0,0,0,0.9); cursor: zoom-out; max-height: 90vh; overflow-y: auto;}
+        .zoom-overlay.active .zoomed-card { transform: scale(1); }
+        
+        .close-zoom { position: absolute; top: 20px; right: 20px; color: #ffffff; font-size: 30px; cursor: pointer; background: var(--bg-deep); width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid var(--accent-gold); z-index: 10;}
+        .close-zoom:hover { background: var(--accent-gold); color: var(--bg-deep);}
+
+        .star-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; opacity: 0; transition: opacity 0.5s ease; }
+        .zoom-overlay.active .star-container { opacity: 1; }
+
+        .star-container::before, .star-container::after { content: ''; position: absolute; top: 0; left: 0; width: 200%; height: 200%; background-image: 
+            radial-gradient(white 1px, transparent 2%),
+            radial-gradient(white 1px, transparent 2%),
+            radial-gradient(white 2px, transparent 3%),
+            radial-gradient(white 1px, transparent 2%);
+            background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
+            background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
+            animation: starRotate 100s linear infinite; opacity: 0.5; }
+        
+        .star-container::after { background-size: 450px 450px, 250px 250px, 150px 150px, 250px 250px;
+            background-position: 150px 150px, 200px 200px, 280px 280px, 100px 150px;
+            animation: starRotate 60s linear infinite reverse; opacity: 0.3; }
+
+        @keyframes starRotate { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        .zoomed-card .member-number { font-size: 80px; opacity: 0.1; }
+        .zoomed-card .team-img { width: 130px; height: 130px; margin-bottom: 25px; }
+        .zoomed-card h3 { font-size: 30px; }
+        .zoomed-card .team-role { font-size: 16px; margin-bottom: 20px;}
+        .zoomed-card p { font-size: 15px; line-height: 1.8; margin-bottom: 25px; }
+
+        /* Footer */
+        footer { background: linear-gradient(180deg, var(--bg-card) 0%, var(--bg-deep) 100%); color: var(--text-muted); padding: 60px 40px; text-align: center; font-size: 14px; border-top: 1px solid var(--border-color); margin-top: 60px;}
+        .contact-info p { margin-bottom: 8px; color: #e2e8f0; font-weight: 500; }
+        .contact-info p strong { color: var(--accent-gold); }
+        .footer-nav { margin-top: 20px; display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; }
+        .footer-nav a { color: var(--text-muted); text-decoration: none; font-weight: 600; transition: color 0.3s; }
+        .footer-nav a:hover { color: var(--accent-gold); }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">Faizan Printing Press</div>
+        <div class="header-right">
+            <div class="menu-icon" onclick="toggleMenu(event)">☰ Quick Menu</div>
+            <nav id="nav-menu">
+                <a href="index.html">🏠 Home</a>
+                <a href="services.html">⚙️ Services</a>
+                <a href="printing-rate-list.html">📋 Printing Rate List</a>
+                <a href="contact.html">📞 Contact</a>
+                <a href="address.html">📍 Address</a>
+                <a href="about-us.html">ℹ️ About Us</a>
+                <a href="portfolio.html">🎨 Portfolio</a>
+                <a href="products.html">📦 Products</a>
+                <a href="clients.html">🤝 Clients</a>
+                <a href="testimonials.html">⭐ Testimonials</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Attention Banner -->
+    <div class="attention-banner" onclick="toggleMenu(event)">
+        🚀 Premium Printing Solutions in Shopian, J&K | Click to Explore All Pages! 🌟
+    </div>
+
+    <!-- Hero Section with Page-Load Movement Animation & Bubble Background -->
+    <div class="hero">
+        <div class="bubble-pattern-bg"></div>
+        <h1>Meet Our Expert <span>Team</span></h1>
+        <p>The backbone of Print Press Shopian. Professionals dedicated to quality, precision, and bringing your vision to life.</p>
+    </div>
+
+    <!-- Professional Article Section (500-600 Words about Print Press & Craftsmanship) -->
+    <div class="article-section">
+        <h2>The Excellence Behind <span>Print Press Shopian</span></h2>
+        
+        <p>Welcome to Print Press, the premier destination for high-end offset printing, digital publishing, customized corporate branding, and luxury packaging solutions in the heart of Shopian, Jammu & Kashmir. Founded with a vision to revolutionize the local printing industry, our establishment has grown into a trusted powerhouse of creativity, precision, and unwavering reliability. We believe that every printed piece—whether it is a simple business receipt, a multi-copy commercial invoice book, a radiant outdoor flex hoarding, or a royal laser-cut wedding invitation box—tells a unique story. Our commitment is to ensure that your brand narrative is conveyed with absolute clarity, vibrant color accuracy, and striking visual elegance.</p>
+
+        <h3>Our Technological Edge & Quality Standards</h3>
+        <p>In today's fast-paced commercial world, quality and speed are paramount. At Print Press, we have invested heavily in state-of-the-art offset machinery, high-definition digital printers, advanced foil stamping equipment, and precision cutting and binding units. This robust technological infrastructure allows us to handle bulk institutional orders and urgent individual requests with equal ease and efficiency. We utilize premium-grade paper stocks, eco-friendly solvent inks, and durable lamination materials that withstand harsh weather conditions and daily wear. From strict quality control inspections at every stage of production to innovative finishing techniques like raised spot UV coating and metallic embossing, we leave no stone unturned in delivering perfection.</p>
+
+        <h3>Building Lasting Relationships Through Trust</h3>
+        <p>Beyond our advanced machinery and technical prowess, our greatest asset is the deep-rooted trust we share with our valued clients. Over the years, we have had the distinct privilege of serving prestigious educational institutions, bustling retail markets, government bodies, healthcare providers, and wholesale apple growers across J&K. We understand the unique demands of local businesses and strive to offer cost-effective, transparent, and prompt services tailored to individual identities. Our customer-centric approach means that every client is treated as a long-term partner, receiving personalized guidance from our expert design and production teams from concept inception to final delivery.</p>
+
+        <h3>Meet the Masterminds Behind the Press</h3>
+        <p>A great press is defined not just by its machines, but by the passionate individuals who operate them. Below, we proudly showcase our dedicated team of 20 seasoned professionals—from visionary founders and master graphic designers to expert machine operators, binders, and logistics coordinators. Each member brings years of specialized experience, meticulous attention to detail, and a relentless passion for craftsmanship. Together, the Print Press family works round the clock to turn your creative concepts into tangible, breathtaking realities. Explore our team profiles below to learn more about the skilled artisans who power our press every single day.</p>
+    </div>
+
+    <!-- Team Section with All 20 Members -->
+    <div class="team-section">
+        <h2>Our Core <span>Staff</span></h2>
+        <div class="team-grid">
+            
+            <!-- 1. Owner -->
+            <div class="team-card" onclick="zoomCard(this)">
+                <span class="member-number">01</span>
+                <div class="card-content">
+                    <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?&w=150&h=150&auto=format&fit=crop&crop=faces&q=80" alt="Rajesh Sharma" class="team-img">
+                    <h3>Rajesh Sharma</h3>
+                    <span class="team-role">Founder & Managing Director</span>
+                    <p>Rajesh ji press ke sansthapak hain aur pichle 20 saalon se printing industry mein apni behtareen leadership de rahe hain. Unhone is press ko chhote star se shuru karke aaj ek bada brand banaya hai. Unka mukhy dhyan naye clients ke sath acche sambhand banane aur quality maintain karne par hota hai. Ve poori team ko motivate karte hain taaki har ek customer ko samay par behtareen seva mil sake. Unka anubhav aur vision hamari press ki sabse badi takat hai.</p>
+                </div>
+            </div>
+
+            <!-- 2. Manager -->
+            <div class="team-card" onclick="zoomCard(this)">
+                <span class="member-number">02</span>
+                <div class="card-content">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?&w=150&h=150&auto=format&fit=crop&crop=faces&q=80" alt="Amit Verma" class="team-img">
+                    <h3>Amit Verma</h3>
+                    <span class="team-role">General Manager</span>
+                    <p>Amit ji press ke daanik kaaryo aur management ko sambhalte hain. Orders ki booking se lekar unki delivery tak ka sara process wahi nireekshan karte hain. Unke paas customer handling ka 10 saal se zyada ka anubhav hai. Ve yeh sunishchit karte hain ki har ek print job bina kisi rukawat ke samay par poori ho. Unka vyavhar behad namra aur samasya ka turant samadhan karne wala hai.</p>
+                </div>
+            </div>
+
+            <!-- 3. Lead Designer -->
+            <div class="team-card" onclick="zoomCard(this)">
+                <span class="member-number">03</span>
+                <div class="card-content">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?&w=150&h=150&auto=format&fit=crop&crop=faces&q=80" alt="Priya Singh" class="team-img">
+                    <h3>Priya Singh</h3>
+                    <span class="team-role">Senior Graphic Designer</span>
+                    <p>Priya ji hamari creative team ki head hain aur sabhi naye designs wahi tayar karti hain. Visiting cards se lekar bade banners tak, unka design hamesha akarshak hota hai. Unhe Photoshop aur CorelDraw mein maharat hasil hai. Ve customer ki soch ko ek behtareen digital roop dene mein mahir hain. Unki kala aur creativity har print product mein saaf nazar aati hai.</p>
+                </div>
+            </div>
+
+            <!-- 4. Offset Press Operator -->
+            <div class="team-card" onclick="zoomCard(this)">
+                <span class="member-number">04</span>
+                <div class="card-content">
+                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?&w=150&h=150&auto=format&fit=crop&crop=faces&q=80" alt="Ramesh Kumar" class="team-img">
+                    <h3>Ramesh Kumar</h3>
+                    <span class="team-role">Lead Offset Operator</span>
+                    <p>Ramesh ji bade volume wale print orders ko handle karne ke expert hain. Offset printing machine par unka haath behad saaf aur teez hai. Ve rangon ki shuddhata (color accuracy) ka vishesh dhyan rakhte hain. Machine ki dekhbhal aur maintenance ki zimmedari bhi wahi sambhalte hain. Unki mehnat ki wajah se bade orders hamesha waqt par taiyar hote hain.</p>
+                </div>
+            </div>
+
+            <!-- 5. Digital Printer -->
+            <div class="team-card" onclick="zoomCard(this)">
+                <span class="member-number">05</span>
+                <div class="card-content">
+                    <img src="https://images.unsplash.com/photo-1583864697784-a1efc8379f70?&w=150&h=150&auto=format&fit=crop&crop=faces&q=80" alt="Vikas Gupta" class="team-img">
+                    <h3>Vikas Gupta</h3>
+                    <span class="team-role">Digital Printing Expert</span>
+                    <p>Vikas ji tatkal (urgent) aur chhote digital print orders ko dekhte hain. Fast printing aur high-resolution output dene mein unka koi mukabla nahi hai. Ve naye digital printers aur scanners ko chalane mein nipun hain. Customer ki pasand ke mutabiq turant sample nikal kar dena unka kaam hai. Ve apne kaam mein behad sakriya aur tej hain.</p>
+                </div>
+            </div>
+
+            <!-- 6. Binder Master -->
+            <div class="team-card" onclick="zoomCard(this)">
+                <span class="member-number">06</span>
+                <div class="card-content">
+                    <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?&w=150&h=150&auto=format&fit=crop&crop=faces&q=80" alt="Manoj Sharma" class="team-img">
+                    <h3>Manoj Sharma</h3>
+                    <span class="team-role">Binding & Finishing Head</span>
+                    <p>Manoj ji printing ke baad ki finishing jaise cutting, binding, aur lamination sambhalte hain. Kitabein, notebooks aur brochures ko shandar finishing dena unka kaam hai. Unke dwara ki gayi binding behad majboot aur saaf suthri hoti hai. Ve modern cutting tools aur machines ko bade aaram se chalate hain. Unka kaam product ko ek professional look deta hai.</p>
+                </div>
+            </div>
+
+            <!-- 7. Quality Inspector -->
+            <div class="team-card" onclick="zoomCard(this)">
+                <span class="member-number">07</span>
+                <div class="card-content">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?&w=150&h=150&auto=format&fit=crop&crop=faces&q=80" alt="Sunita Devi" class="team-img">
+                    <h3>Sunita Devi</h3>
+                    <span class="team-role">Quality Control Head</span>
+                    <p>Sunita ji yeh check karti hain ki chhapai ke baad koi kharabi toh nahi reh gayi. Har ek product ko baareeki se janchne ke baad hi packing ke liye bheja jata hai. Unki nazar se koi bhi choti si chook bhi nahi bach sakti hai. Press ki high quality reputation ko banaye rakhne mein unka bada yogdaan hai. Ve apne kaam mein behad kathor aur imandaar hain.</p>
+                </div>
+            </div>
+
+            <!-- 8. Screen Printing Expert -->
+            <div class="team-card" onclick="zoomCard(this)">
+                <span class="member-number">08</span>
+                <div class="card-content">
+                    <img src="https://images.unsplash.com/photo-1519345182560-3f2917c472ef?&w=150&h=150&auto=format&fit=crop&crop=faces&q=80" alt="Deepak Patel" class="team-img">
+                    <h3>Deepak Patel</h3>
+                    <span class="team-role">Screen Printing Specialist</span>
+                    <p>Deepak ji kapdo, bags aur special items par screen printing karne ke expert hain. Unke banaye gaye designs lambe samay tak feke nahi padte hain. Material ke hisab se sahi ink ka chunav karna unhe acche se aata hai. Bulk orders mein bhi finishing ek jaisi rakhna unki visheshta hai. Team mein unka kaam behad sanyukt aur sahaj hai.</p>
+                </div>
+            </div>
+
+            <!-- 9. Customer Support -->
+            <div class="team-card" onclick="zoomCard(this)">
+                <span class="member-number">09</span>
+                <div class="card-content">
+                    <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?&w=150&h=150&auto=format&fit=crop&crop=faces&q=80" alt="Neha Verma" class="team-img">
+                    <h3>Neha Verma</h3>
+                    <span class="team-role">Customer Care Executive</span>
+                    <p>Neha ji counter par aane wale aur phone par baat karne wale grahakon ka swagat karti hain. Grahakon ki shikayaton aur sawalon ka turant aur santushtijanak jawab deti hain. Rate inquiry aur order status ki jankari dena unka mukhy kaam hai. Unka mitravat vyavhar sabhi grahakon ko behad pasand aata hai. Ve press ka pehla aur sahaj chehra hain.</p>
+                </div>
+            </div>
+
+            <!-- 10. Cutting Operator -->
+            <div class="team-card" onclick="zoomCard(this)">
+                <span class="member-number">10</span>
+                <div class="card-content">
+                    <img src="https://images.unsplash.com/photo-1521119989659-a83eee488004?&w=150&h=150&auto=format&fit=crop&crop=faces&q=80" alt="Ravi Shankar" class="team-img">
+                    <h3>Ravi Shankar</h3>
+                    <span class="team-role">Paper Cutting Operator</span>
+                    <p>Ravi ji paper cutting machine ke master hain jo sahi naap par kagaz kaatate hain. Chhote se chhota card ho ya bada poster, unki cutting bilkul sateek hoti hai. Kagaz ki barbadi ko kam se kam rakhna unki kala hai. Ve machine ki safety aur saaf-safai ka poora dhyan rakhte hain. Unka kaam baaki sabhi processes ke liye pehla kadam hota hai.</p>
+                </div>
+            </div>
+
+            <!-- 11. Graphic Assistant -->
+            <div class="team-card" onclick="zoomCard(this)">
+                <span class="member-number">11</span>
+                <div class="card-content">
+                    <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?&w=150&h=150&auto=format&fit=crop&crop=faces&q=80" alt="Anjali Mehta" class="team-img">
+                    <h3>Anjali Mehta</h3>
+                    <span class="team-role">Junior Designer</span>
+                    <p>Anjali ji designing team mein Priya ji ki sahayata karti hain aur naye ideas laati hain. Wedding cards aur festival banners banane mein unki ruchi vishesh hai. Grahakon ke bataye anusaar turant changes karna unhein acche se aata hai. Ve naye software aur design trends ko jaldi seekhti hain. Unkautsah aur mehnat dekhne layak hoti hai.</p>
+                </div>
+            </div>
+
+            <!-- 12. Delivery Head -->
+            <div class="team-card" onclick="zoomCard(this)">
+                <span class="member-number">12</span>
+                <div class="card-content">
+                    <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?&w=150&h=150&auto=format&fit=crop&crop=faces&q=80" alt="Suresh Yadav" class="team-img">
+                    <h3>Suresh Yadav</h3>
+                    <span class="team-role">Logistics & Delivery Incharge</span>
+                    <p>Suresh ji tayar maal ko sahi samay par grahak tak pahunchane ki zimmedari uthate hain. Local transport aur shipping ke sabhiamoamle wahi sambhalte hain. Maal raste mein surakshit rahe, iska poora dhyan rakha jata hai. Urgency ke samay khud delivery karne se bhi ve piche nahi hattee. Unki samay ki pabandi behad kaabil-e-tareef hai.</p>
+                </div>
+            </div>
+
+            <!-- 13. Packaging Specialist -->
+            <div class="team-card" onclick="zoomCard(this)">
+                <span class="member-number">13</span>
+                <div class="card-content">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?&w=150&h=150&auto=format&fit=crop&crop=faces&q=80" alt="Pooja Sharma" class="team-img">
+                    <h3>Pooja Sharma</h3>
+                    <span class="team-role">Packaging Expert</span>
+                    <p>Pooja ji printing ke baad products ko is tarah pack karti hain ki unhe nami ya nuksan se bachaya ja sake. Har ek bundle ko proper labeling ke sath taiyar kiya jata hai. Unki packaging dekhne mein bhi behad saaf-suthri aur professional hoti hai. Transport ke dauran maal kharab na ho, iska poora prabandh wahi karti hain. Ve apne kaam mein ekdam nipun hain.</p>
+                </div>
+            </div>
+
+            <!-- 14. Machine Maintenance -->
+            <div class="team-card" onclick="zoomCard(this)">
+                <span class="member-number">14</span>
+                <div class="card-content">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?&w=150&h=150&auto=format&fit=crop&crop=faces&q=80" alt="Vijay Kumar" class="team-img">
+                    <h3>Vijay Kumar</h3>
+                    <span class="team-role">Technical & Maintenance Engineer</span>
+                    <p>Vijay ji press ki sabhi machines ko thik rakhne aur unki service karne ka kaam karte hain. Agar achanak koi machine kharab ho jaye, toh turant use thik kar dete hain. Unke paas mechanical aur electrical dono ka accha gyan hai. Machines bina ruke chalti rahein, yeh sunishchit karna unka mukhya kartavya hai. Unki takniki samajh behad shandar hai.</p>
+                </div>
+            </div>
+
+            <!-- 15. Raw Material Manager -->
+            <div class="team-card" onclick="zoomCard(this)">
+                <span class="member-number">15</span>
+                <div class="card-content">
+                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?&w=150&h=150&auto=format&fit=crop&crop=faces&q=80" alt="Alok Nath" class="team-img">
+                    <h3>Alok Nath</h3>
+                    <span class="team-role">Inventory & Stock Manager</span>
+                    <p>Alok ji kagaz, ink, aur doosri printing samagri ka stock manage karte hain. Kis cheez ki kami hone wali hai, iska andaza laga kar pehle se mangwa lete hain. Stock ka hisab-kitaab rakhna aur quality material chunna unka kaam hai. Unki vyavastha ki wajah se kabhi bhi kaam mein badha nahi aati. Ve imandari aur parishram se apna kaam karte hain.</p>
+                </div>
+            </div>
+
+            <!-- 16. Lamination Operator -->
+            <div class="team-card" onclick="zoomCard(this)">
+                <span class="member-number">16</span>
+                <div class="card-content">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?&w=150&h=150&auto=format&fit=crop&crop=faces&q=80" alt="Karan Singh" class="team-img">
+                    <h3>Karan Singh</h3>
+                    <span class="team-role">Lamination Specialist</span>
+                    <p>Karan ji glossy aur matte lamination karne mein visheshroop se mahir hain. Covers aur menus par lamination karne se unki umar aur chamak badh jati hai. Bubble-free aur smooth finish dena unka kaam hai. Ve machine ke taapman aur speed ko bilkul sahi set karte hain. Unke kaam se products ki durability kafi badh jati hai.</p>
+                </div>
+            </div>
+
+            <!-- 17. Accounts Manager -->
+            <div class="team-card" onclick="zoomCard(this)">
+                <span class="member-number">17</span>
+                <div class="card-content">
+                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?&w=150&h=150&auto=format&fit=crop&crop=faces&q=80" alt="Rekha Sen" class="team-img">
+                    <h3>Rekha Sen</h3>
+                    <span class="team-role">Accounts & Billing Executive</span>
+                    <p>Rekha ji bills banana, payments receive karna aur daily accounts ka record rakhna sambhalti hain. Grahakon ko transparent billing dena aur GST ke niyamo ka palan karna unka kaam hai. Unka hisab hamesha ekdum sateek aur clear hota hai. Office ke vittiya mamle wahi dekhti hain. Unki karyashaili behad vyavasthit hai.</p>
+                </div>
+            </div>
+
+            <!-- 18. Helper / Assistant -->
+            <div class="team-card" onclick="zoomCard(this)">
+                <span class="member-number">18</span>
+                <div class="card-content">
+                    <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?&w=150&h=150&auto=format&fit=crop&crop=faces&q=80" alt="Mohan Lal" class="team-img">
+                    <h3>Mohan Lal</h3>
+                    <span class="team-role">Production Assistant</span>
+                    <p>Mohan ji press ke andar saari machines tak kagaz aur material pahunchane ka kaam karte hain. Jab bhi bulk order hota hai, toh sabhi ki madad ke liye turant haazir rehte hain. Press ki saaf-safai aur vyavastha mein unka bada yogdaan hai. Unki mehnat ke bina koi bhi bada order samay par poora nahi ho sakta. Ve behad mehnatkash vyakti hain.</p>
+                </div>
+            </div>
+
+            <!-- 19. Marketing Executive -->
+            <div class="team-card" onclick="zoomCard(this)">
+                <span class="member-number">19</span>
+                <div class="card-content">
+                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?&w=150&h=150&auto=format&fit=crop&crop=faces&q=80" alt="Rahul Kapoor" class="team-img">
+                    <h3>Rahul Kapoor</h3>
+                    <span class="team-role">Marketing & Sales Head</span>
+                    <p>Rahul ji naye vyapaaron aur corporate clients tak hamari services ki jankari pahunchate hain. Press ke liye naye contracts lana aur business ko badhana unka mukhya lakshya hai. Market ke naye trends aur rates ki jankari unke paas hamesha rehti hai. Grahakon se acche sambhand banana unki khasiyat hai. Unki vakta kala behad prabhavshali hai.</p>
+                </div>
+            </div>
+
+            <!-- 20. Night Shift Supervisor -->
+            <div class="team-card" onclick="zoomCard(this)">
+                <span class="member-number">20</span>
+                <div class="card-content">
+                    <img src="https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?&w=150&h=150&auto=format&fit=crop&crop=faces&q=80" alt="Vinod Rathore" class="team-img">
+                    <h3>Vinod Rathore</h3>
+                    <span class="team-role">Night Shift Supervisor</span>
+                    <p>Vinod ji raatri ke samay chalne wale printing kaam ki dekhbhal karte hain. Jab bade orders ki deadline hoti hai, toh raat mein bhi kaam unhi ki dekhrekh mein chalta hai. Sabhi workers apna kaam theek se kar rahe hain, yeh sunishchit karna unka kaam hai. Raat ke samay bhi press ko suvidhajanak chalate hain. Unka yogdaan anmol hai.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Zoom Overlay Structure -->
+    <div class="zoom-overlay" id="zoomOverlay" onclick="closeZoom(event)">
+        <div class="zoomed-card" id="zoomedCard">
+            <div class="star-container"></div>
+            <div class="close-zoom" onclick="closeZoomDirect()">×</div>
+            <div id="zoomedContent"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="contact-info">
+            <p>📧 <strong>Email:</strong> faizan@printpress.com</p>
+            <p>📞 <strong>Phone:</strong> +91 9149762843</p>
+            <p>📍 <strong>Location:</strong> Shopian, Jammu & Kashmir</p>
+        </div>
+        <div class="footer-nav">
+            <a href="index.html">🏠 Home</a>
+            <a href="services.html">⚙️ Services</a>
+            <a href="printing-rate-list.html">📋 Printing Rate List</a>
+            <a href="contact.html">📞 Contact</a>
+            <a href="address.html">📍 Address</a>
+        </div>
+        <div class="copyright">
+            <div class="footer-bottom-credit" style="text-align: center; margin-top: 15px; font-size: 13px; color: var(--text-muted);">
+                Designed by <a href="[Aapka-Portfolio-Link]" target="_blank" style="color: var(--accent-gold); text-decoration: none; font-weight: 600;">[ISHTIYAQ GULZAR]</a> | 
+                <span class="social-icons" style="margin-left: 10px; display: inline-flex; gap: 15px; vertical-align: middle;">
+                    <a href="https://www.instagram.com/jaani_927/" target="_blank" title="Instagram" style="color: var(--text-main); font-size: 16px; text-decoration: none; transition: color 0.3s;"><i class="fab fa-instagram"></i> Instagram</a>
+                    <a href="https://www.facebook.com/bhat.ishtiyaq.737" target="_blank" title="Facebook" style="color: var(--text-main); font-size: 16px; text-decoration: none; transition: color 0.3s;"><i class="fab fa-facebook"></i> Facebook</a>
+                    <a href="https://wa.me/9149604818" target="_blank" title="WhatsApp" style="color: var(--text-main); font-size: 16px; text-decoration: none; transition: color 0.3s;"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                </span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu(event) {
+            if (event) event.stopPropagation();
+            var menu = document.getElementById("nav-menu");
+            menu.classList.toggle("active");
+        }
+
+        function zoomCard(cardElement) {
+            var overlay = document.getElementById("zoomOverlay");
+            var contentDiv = document.getElementById("zoomedContent");
+            
+            // Copy clicked card inner content into overlay
+            contentDiv.innerHTML = cardElement.innerHTML;
+            
+            overlay.classList.add("active");
+            document.body.style.overflow = "hidden"; // Prevent background scrolling
+        }
+
+        function closeZoomDirect() {
+            var overlay = document.getElementById("zoomOverlay");
+            overlay.classList.remove("active");
+            document.body.style.overflow = "auto";
+        }
+
+        function closeZoom(event) {
+            // Close only if clicked on dark overlay background, not on the card itself
+            if (event.target.id === "zoomOverlay") {
+                closeZoomDirect();
+            }
+        }
+
+        // Close menu automatically when clicking outside anywhere on the page
+        document.addEventListener("click", function(event) {
+            var menu = document.getElementById("nav-menu");
+            var menuIcon = document.querySelector(".menu-icon");
+            var banner = document.querySelector(".attention-banner");
+            
+            if (menu.classList.contains("active")) {
+                if (!menu.contains(event.target) && event.target !== menuIcon && event.target !== banner) {
+                    menu.classList.remove("active");
+                }
+            }
+        });
+    </script>
+</body>
+</html>

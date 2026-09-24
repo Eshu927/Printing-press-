@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Print Press - About Us & Comprehensive Press Catalog</title>
+    <!-- FontAwesome CDN for Social Media Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-deep: #05070a;
+            --bg-card: #10141d;
+            --text-main: #e2e8f0;
+            --text-muted: #94a3b8;
+            --accent-gold: #fbbf24;
+            --accent-orange: #f97316;
+            --border-color: rgba(251, 191, 36, 0.2);
+            --card-shadow: 0 10px 30px -10px rgba(0,0,0,0.6);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: var(--bg-deep); color: var(--text-main); overflow-x: hidden; line-height: 1.6; }
+        
+        /* Header & Navigation */
+        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; background-color: rgba(5, 7, 10, 0.95); box-shadow: 0 4px 20px rgba(0,0,0,0.5); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(10px); border-bottom: 1px solid var(--border-color); }
+        
+        /* Animated Color Changing Logo */
+        .logo { font-weight: 800; font-size: 28px; letter-spacing: 1.5px; text-transform: uppercase; animation: colorChange 6s infinite; }
+        @keyframes colorChange {
+            0% { color: var(--accent-gold); }
+            33% { color: #38bdf8; }
+            66% { color: #f97316; }
+            100% { color: var(--accent-gold); }
+        }
+        .logo span { color: #ffffff; }
+
+        .header-right { display: flex; align-items: center; gap: 20px; }
+        
+        /* Animated Color Changing Quick Menu Icon */
+        .menu-icon { font-size: 18px; cursor: pointer; color: var(--text-main); background: var(--bg-card); padding: 10px 20px; border-radius: 30px; border: 2px solid var(--accent-gold); font-weight: 600; transition: all 0.3s ease; display: flex; align-items: center; gap: 8px; animation: menuIconGlow 5s infinite; }
+        @keyframes menuIconGlow {
+            0% { border-color: var(--accent-gold); box-shadow: 0 0 10px rgba(251,191,36,0.3); }
+            33% { border-color: #38bdf8; box-shadow: 0 0 15px rgba(56,189,248,0.4); }
+            66% { border-color: var(--accent-orange); box-shadow: 0 0 15px rgba(249,115,22,0.4); }
+            100% { border-color: var(--accent-gold); box-shadow: 0 0 10px rgba(251,191,36,0.3); }
+        }
+        .menu-icon:hover { background: var(--accent-gold); color: var(--bg-deep); transform: translateY(-2px); box-shadow: 0 5px 20px rgba(251,191,36,0.5); }
+
+        /* Animated Color Changing Quick Menu Box Border */
+        nav#nav-menu { display: none; flex-direction: column; position: absolute; top: 85px; right: 40px; background-color: var(--bg-card); min-width: 250px; border-radius: 15px; padding: 15px 0; box-shadow: 0 20px 40px rgba(0,0,0,0.8); border: 2px solid var(--accent-gold); z-index: 2000; opacity: 0; transform: translateY(-10px); transition: opacity 0.4s ease, transform 0.4s ease; animation: boxBorderGlow 6s infinite; }
+        @keyframes boxBorderGlow {
+            0% { border-color: var(--accent-gold); box-shadow: 0 0 20px rgba(251,191,36,0.4); }
+            33% { border-color: #38bdf8; box-shadow: 0 0 25px rgba(56,189,248,0.5); }
+            66% { border-color: var(--accent-orange); box-shadow: 0 0 25px rgba(249,115,22,0.5); }
+            100% { border-color: var(--accent-gold); box-shadow: 0 0 20px rgba(251,191,36,0.4); }
+        }
+
+        nav#nav-menu.active { display: flex; opacity: 1; transform: translateY(0); }
+        nav#nav-menu a { color: var(--text-main); text-decoration: none; padding: 12px 25px; font-weight: 600; font-size: 15px; transition: all 0.3s ease; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid rgba(255,255,255,0.03); }
+        nav#nav-menu a:last-child { border-bottom: none; }
+        nav#nav-menu a:hover { background: rgba(251, 191, 36, 0.2); color: var(--accent-gold); padding-left: 30px; }
+
+        /* Different Unique Background Colors for Each Quick Menu Item */
+        nav#nav-menu a:nth-child(1) { background: rgba(251, 191, 36, 0.15); }
+        nav#nav-menu a:nth-child(2) { background: rgba(56, 189, 248, 0.15); }
+        nav#nav-menu a:nth-child(3) { background: rgba(249, 115, 22, 0.15); }
+        nav#nav-menu a:nth-child(4) { background: rgba(168, 85, 247, 0.15); }
+        nav#nav-menu a:nth-child(5) { background: rgba(236, 72, 153, 0.15); }
+        nav#nav-menu a:nth-child(6) { background: rgba(34, 197, 94, 0.15); }
+        nav#nav-menu a:nth-child(7) { background: rgba(20, 184, 166, 0.15); }
+        nav#nav-menu a:nth-child(8) { background: rgba(244, 63, 94, 0.15); }
+        nav#nav-menu a:nth-child(9) { background: rgba(234, 179, 8, 0.15); }
+        nav#nav-menu a:nth-child(10) { background: rgba(99, 102, 241, 0.15); }
+
+        /* Continuous Animated Banner */
+        .attention-banner { background: linear-gradient(-45deg, #05070a, var(--accent-gold), var(--accent-orange), #05070a); background-size: 400% 400%; color: #ffffff; padding: 15px 30px; text-align: center; font-weight: 700; font-size: 16px; animation: gradientBG 10s ease infinite; cursor: pointer; border-bottom: 2px solid #ffffff; letter-spacing: 0.5px; text-transform: uppercase; }
+        @keyframes gradientBG { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+
+        /* Hero Banner with Smooth Continuous Moving Cloud Animation */
+        .about-hero { padding: 90px 20px; text-align: center; position: relative; background: linear-gradient(135deg, #0284c7, #0369a1); border-bottom: 2px solid var(--border-color); overflow: hidden; }
+
+        .bubble-pattern-bg { 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 300%; 
+            height: 100%; 
+            background-image: 
+                radial-gradient(rgba(255, 255, 255, 0.45) 10px, transparent 10px),
+                radial-gradient(rgba(255, 255, 255, 0.25) 18px, transparent 18px),
+                radial-gradient(rgba(251, 191, 36, 0.35) 12px, transparent 12px);
+            background-size: 250px 250px, 350px 350px, 300px 300px;
+            background-position: 0 0, 80px 80px, 150px 150px;
+            animation: mobileCloudMove 15s linear infinite; 
+            pointer-events: none; 
+            z-index: 1; 
+            will-change: transform;
+        }
+
+        @keyframes mobileCloudMove { 
+            0% { transform: translate3d(0, 0, 0); } 
+            100% { transform: translate3d(-33.333%, 0, 0); } 
+        }
+
+        .about-hero > * { position: relative; z-index: 2; }
+        .about-hero h1 { font-size: 40px; margin-bottom: 15px; color: #ffffff; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; text-shadow: 0 3px 10px rgba(0,0,0,0.5); }
+        .about-hero h1 span { color: var(--accent-gold); }
+        .about-hero p { font-size: 18px; color: #f0f9ff; max-width: 700px; margin: 0 auto; line-height: 1.6; text-shadow: 0 2px 6px rgba(0,0,0,0.5); }
+
+        /* Top Trust Highlight Box */
+        .trust-highlight-box { max-width: 1200px; margin: 50px auto 20px; padding: 0 20px; }
+        .trust-banner-card { background: linear-gradient(145deg, #131b2e, #0b101b); border: 2px solid var(--accent-gold); border-radius: 20px; padding: 35px; text-align: center; box-shadow: 0 15px 35px rgba(251, 191, 36, 0.2); }
+        .trust-banner-card h2 { color: #ffffff; font-size: 28px; margin-bottom: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
+        .trust-banner-card h2 span { color: var(--accent-gold); }
+        .trust-banner-card p { color: var(--text-muted); font-size: 15px; line-height: 1.8; max-width: 950px; margin: 0 auto; }
+
+        /* 50 Cards Container & Grid */
+        .cards-container { max-width: 1300px; margin: 50px auto; padding: 0 20px; }
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        
+        .info-card { background: linear-gradient(145deg, #131b2e, #0b101b); border: 1px solid var(--border-color); border-radius: 20px; padding: 30px; box-shadow: var(--card-shadow); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative; overflow: hidden; cursor: pointer; display: flex; flex-direction: column; justify-content: space-between; }
+        .info-card:hover { transform: translateY(-8px); border-color: var(--accent-gold); box-shadow: 0 15px 35px -10px rgba(251, 191, 36, 0.3); }
+
+        .card-number { position: absolute; top: 15px; right: 20px; font-size: 35px; font-weight: 900; color: var(--accent-gold); opacity: 0.3; transition: opacity 0.3s; }
+        .info-card:hover .card-number { opacity: 1; }
+
+        .info-card h3 { color: #ffffff; font-size: 19px; margin-bottom: 12px; font-weight: 700; padding-right: 30px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .info-card h3 span { color: var(--accent-gold); }
+        .info-card p { color: var(--text-muted); font-size: 13px; line-height: 1.8; text-align: justify; }
+
+        /* Zoom Overlay & Star Sparkle Animation */
+        .zoom-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(5, 7, 10, 0.95); z-index: 9999; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: all 0.5s ease; backdrop-filter: blur(5px); }
+        .zoom-overlay.active { opacity: 1; visibility: visible; }
+
+        .zoomed-card { width: 90%; max-width: 650px; background: var(--bg-card); border: 2px solid var(--accent-gold); border-radius: 25px; padding: 40px; position: relative; transform: scale(0.5); transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); box-shadow: 0 30px 60px rgba(0,0,0,0.9); cursor: zoom-out; max-height: 90vh; overflow-y: auto; }
+        .zoom-overlay.active .zoomed-card { transform: scale(1); }
+        
+        .close-zoom { position: absolute; top: 20px; right: 20px; color: #ffffff; font-size: 30px; cursor: pointer; background: var(--bg-deep); width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid var(--accent-gold); z-index: 10; }
+        .close-zoom:hover { background: var(--accent-gold); color: var(--bg-deep); }
+
+        .star-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; opacity: 0; transition: opacity 0.5s ease; }
+        .zoom-overlay.active .star-container { opacity: 1; }
+
+        .star-container::before, .star-container::after { content: ''; position: absolute; top: 0; left: 0; width: 200%; height: 200%; background-image: 
+            radial-gradient(white 1px, transparent 2%),
+            radial-gradient(white 1px, transparent 2%),
+            radial-gradient(white 2px, transparent 3%),
+            radial-gradient(white 1px, transparent 2%);
+            background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
+            background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
+            animation: starRotate 100s linear infinite; opacity: 0.5; }
+        
+        .star-container::after { background-size: 450px 450px, 250px 250px, 150px 150px, 250px 250px;
+            background-position: 150px 150px, 200px 200px, 280px 280px, 100px 150px;
+            animation: starRotate 60s linear infinite reverse; opacity: 0.3; }
+
+        @keyframes starRotate { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        .zoomed-card .card-number { font-size: 70px; opacity: 0.1; }
+        .zoomed-card h3 { font-size: 26px; padding-right: 40px; margin-bottom: 20px; }
+        .zoomed-card p { font-size: 15px; line-height: 1.9; }
+
+        /* Footer */
+        footer { background: linear-gradient(180deg, var(--bg-card) 0%, var(--bg-deep) 100%); color: var(--text-muted); padding: 60px 40px; text-align: center; font-size: 14px; border-top: 1px solid var(--border-color); margin-top: 80px; }
+        .contact-info p { margin-bottom: 8px; color: #e2e8f0; font-weight: 500; }
+        .contact-info p strong { color: var(--accent-gold); }
+        .footer-nav { margin-top: 20px; display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; }
+        .footer-nav a { color: var(--text-muted); text-decoration: none; font-weight: 600; transition: color 0.3s; }
+        .footer-nav a:hover { color: var(--accent-gold); }
+        .copyright { margin-top: 30px; font-size: 12px; color: var(--text-muted); border-top: 1px solid rgba(251, 191, 36, 0.1); padding-top: 20px; }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">Faizan Printing Press</div>
+        <div class="header-right">
+            <div class="menu-icon" onclick="toggleMenu(event)">☰ Quick Menu</div>
+            <nav id="nav-menu">
+                <a href="index.html">🏠 Home</a>
+                <a href="services.html">⚙️ Services</a>
+                <a href="printing-rate-list.html">📋 Printing Rate List</a>
+                <a href="contact.html">📞 Contact</a>
+                <a href="address.html">📍 Address</a>
+                <a href="about-us.html">ℹ️ About Us</a>
+                <a href="portfolio.html">🎨 Portfolio</a>
+                <a href="products.html">📦 Products</a>
+                <a href="clients.html">🤝 Clients</a>
+                <a href="testimonials.html">⭐ Testimonials</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Attention Banner -->
+    <div class="attention-banner" onclick="toggleMenu(event)">
+        ⭐ Welcome to Print Press Shopian | Over 18 Years of Absolute Trust & Excellence! 🚀
+    </div>
+
+    <!-- About Hero with Active Moving Animation -->
+    <div class="about-hero">
+        <div class="bubble-pattern-bg"></div>
+        <h1>About <span>Print Press</span></h1>
+        <p>Built on uncompromising trust, precision craftsmanship, and over 18 years of dedicated service to the community of Shopian, J&K.</p>
+    </div>
+
+    <!-- Top Trust Highlight Box (18+ Years Trust) -->
+    <div class="trust-highlight-box">
+        <div class="trust-banner-card">
+            <h2>18+ Years of <span>Absolute Trust & Excellence</span> in Shopian</h2>
+            <p>For nearly two decades, Print Press has stood as the premier benchmark for professional offset printing, digital publishing, customized corporate branding, and heavy-duty packaging solutions in Jammu & Kashmir. Founded and personally supervised by Faizan, our establishment combines traditional printing mastery with advanced technological infrastructure to deliver world-class execution directly to local businesses, educational institutions, government bodies, and retail enterprises.</p>
+        </div>
+    </div>
+
+    <!-- 50 Detailed Informative Cards Container -->
+    <div class="cards-container">
+        <div class="cards-grid">
+
+            <!-- 1 -->
+            <div class="info-card" onclick="zoomCard(this)">
+                <span class="card-number">01</span>
+                <div>
+                    <h3>1. Foundation & <span>Origin Story</span></h3>
+                    <p>Print Press was formally established in the vibrant commercial hub of Shopian, Jammu and Kashmir, with a singular visionary objective: to provide local businesses, academic institutions, and households with world-class printing solutions that were previously inaccessible outside major metropolitan cities. Founded by Faizan, the press began as a modest enterprise equipped with core manual publishing tools. Through unwavering dedication to absolute quality, strict adherence to delivery deadlines, and transparent customer dealings, the establishment rapidly evolved into an industry leader across the entire J&K region. Our origin story is deeply intertwined with the economic and commercial growth of Shopian, where we have proudly supported generations of local entrepreneurs, orchard owners, and school administrators by transforming their branding concepts and documentation needs into tangible physical realities with remarkable precision, artistic flair, and unmatched structural durability.</p>
+                </div>
+            </div>
+
+            <!-- 2 -->
+            <div class="info-card" onclick="zoomCard(this)">
+                <span class="card-number">02</span>
+                <div>
+                    <h3>2. Leadership & <span>Direct Supervision</span></h3>
+                    <p>At the core of Print Press’s phenomenal success and enduring reputation lies the hands-on leadership and direct daily supervision of our founder, Faizan. Unlike corporate commercial setups where management remains detached from active production floors, Faizan maintains an active, boots-on-the-ground presence across every single operational phase. From the initial conceptualization and color calibration stages to final binding inspections and packaging sign-offs, every major print job is meticulously overseen under his direct guidance. This personal commitment ensures that zero compromises ever occur regarding paper grade, ink density, pagination accuracy, or finishing neatness. Clients who partner with us experience a unique sense of security, knowing that an industry veteran with over eighteen years of specialized expertise is personally vouching for the structural and visual integrity of their promotional collateral, commercial logbooks, educational stationery, or event packaging suites.</p>
+                </div>
+            </div>
+
+            <!-- 3 -->
+            <div class="info-card" onclick="zoomCard(this)">
+                <span class="card-number">03</span>
+                <div>
+                    <h3>3. Core Mission & <span>Vision Statement</span></h3>
+                    <p>Our foundational mission at Print Press is to empower every enterprise, school, and individual in Jammu & Kashmir with precise, high-impact, and economically viable printing solutions that effectively amplify their brand voice and operational efficiency. We operate under the firm conviction that superior printing is not merely an arrangement of ink upon paper, but rather a powerful physical vessel that carries brand identity, institutional credibility, and creative expression. Our long-term vision is to continuously modernize our technological infrastructure, expand our eco-friendly substrate catalog, and pioneer advanced digital publishing techniques across Shopian. By maintaining uncompromising standards of excellence, fostering transparent client relationships, and delivering unyielding reliability through every economic season, we strive to remain the definitive printing partner of choice for all commercial, industrial, educational, and domestic publishing requirements throughout the northern Himalayan region.</p>
+                </div>
+            </div>
+
+            <!-- 4 -->
+            <div class="info-card" onclick="zoomCard(this)">
+                <span class="card-number">04</span>
+                <div>
+                    <h3>4. Strategic Location & <span>Market Accessibility</span></h3>
+                    <p>Strategically situated within the bustling Main Commercial Market of Shopian, Jammu & Kashmir, Print Press enjoys exceptional geographic accessibility for clients traveling from all surrounding districts, rural trade zones, and municipal centers. Our central establishment features a dedicated customer consultation lounge, a well-organized sample showroom displaying hundreds of diverse paper stocks and finishing styles, and an expansive production floor designed for seamless logistics. Being located in the heart of Shopian's primary trading artery allows us to coordinate swiftly with local retail merchants, wholesale apple growers associations, transport contractors, and educational board officials. Furthermore, our prominent positioning near major regional transit routes facilitates rapid dispatch and hassle-free cargo loading for large bulk consignments destined for distant commercial destinations across the entire union territory.</p>
+                </div>
+            </div>
+
+            <!-- 5 -->
+            <div class="info-card" onclick="zoomCard(this)">
+                <span class="card-number">05</span>
+                <div>
+                    <h3>5. Advanced Offset <span>Printing Technology</span></h3>
+                    <p>Offset printing forms the technological backbone of Print Press, enabling us to achieve unrivaled cost-efficiency and breathtaking color consistency across massive bulk production runs. Our state-of-the-art sheetfed offset presses are engineered to handle high-speed continuous printing with absolute dot-gain control and flawless ink distribution. Whether executing an order for fifty thousand multi-page school textbooks, ten thousand commercial GST invoice registers, or twenty thousand glossy promotional flyers, our offset machinery guarantees that every single printed sheet is an exact, vibrant replica of the master proof. By utilizing advanced automated plate-changing mechanisms and precision dampening systems, we dramatically reduce setup times while maximizing productivity. This robust offset infrastructure empowers local businesses in Shopian to procure premium commercial stationery at wholesale pricing structures that rival any major manufacturing facility in the country.</p>
+                </div>
+            </div>
+
+            <!-- 6 -->
+            <div class="info-card" onclick="zoomCard(this)">
+                <span class="card-number">06</span>
+                <div>
+                    <h3>6. High-Definition Digital <span>Publishing Suite</span></h3>
+                    <p>Complementing our heavy industrial offset capabilities, Print Press features an advanced high-definition digital printing suite designed specifically for rapid turnaround, short-run requests, and highly personalized variable-data projects. When clients require urgent business cards, custom executive identity badges, last-minute presentation folders, or limited-edition wedding invitation prototypes, our digital presses deliver crystal-clear typography and vibrant CMYK color accuracy within minutes. This technology eliminates the preliminary plate-making phase entirely, making low-quantity customized printing exceptionally affordable and accessible. Our digital printers accommodate an expansive range of heavy cardstocks, textured specialty parchments, transparent vinyl sheets, and synthetic tear-resistant substrates, enabling boundless creative versatility for designers, event planners, and retail entrepreneurs seeking instant execution without sacrificing professional polish.</p>
+                </div>
+            </div>
+
+            <!-- 7 -->
+            <div class="info-card" onclick="zoomCard(this)">
+                <span class="card-number">07</span>
+                <div>
+                    <h3>7. Precision Guillotine Paper <span>Cutting & Trimming</span></h3>
+                    <p>The aesthetic perfection of any printed collateral depends heavily on the uncompromising accuracy of its cutting and trimming phase. At Print Press, we utilize heavy-duty automated Polar guillotine cutting systems equipped with programmable digital microprocessors and advanced infrared safety sensor grids. These industrial-grade cutters enable our expert operators to slice through massive multi-ream paper bundles with microscopic precision, ensuring that every individual business card, book page, flyer, or box blank possesses absolute squareness and flawless edge cleanliness. The high-speed carbide steel blades slice effortlessly through thick 350 GSM cardstocks and multi-ply corrugated boards without generating frayed edges or surface smudges. This meticulous trimming precision guarantees that subsequent binding and packaging assembly phases proceed with seamless dimensional accuracy and professional elegance.</p>
+                </div>
+            </div>
+
+            <!-- 8 -->
+            <div class="info-card" onclick="zoomCard(this)">
+                <span class="card-number">08</span>
+                <div>
+                    <h3>8. Thermal Perfect Binding & <span>Spine Durability</span></h3>
+                    <p>Bookbinding durability is an essential hallmark of quality craftsmanship, particularly for educational textbooks, professional accounting ledgers, and thick corporate directories. Print Press houses advanced Horizon thermal hot-melt glue binding systems that deliver exceptional spine flexibility and lifelong page retention. During the perfect binding process, the gathered book block spines are mechanically roughened and primed before receiving an even, penetrating coat of industrial EVA/PUR adhesive. The wraparound softcover or hard case is then precisely aligned and clamped under optimal thermal pressure, creating a square, professional spine that withstands thousands of aggressive openings without cracking or dropping pages. This robust binding standard ensures that school diaries and commercial reference books endure years of rigorous daily handling across offices and classrooms.</p>
+                </div>
+            </div>
+
+            <!-- 9 -->
+            <div class="info-card" onclick="zoomCard(this)">
+                <span class="card-number">09</span>
+                <div>
+                    <h3>9. Luxury Foil Stamping & <span>Embossing Studios</span></h3>
+                    <p>For elite corporate identities, luxury retail packaging, and royal wedding invitation suites, standard printing alone is often insufficient. Print Press features a dedicated foil stamping and embossing studio where metallic hot-foil transfer presses apply gleaming gold, silver, rose gold, and holographic foils onto textured cardstocks with exquisite tactile dimension. Using precision-engraved magnesium and brass dies, our artisans apply calibrated heat and mechanical pressure to fuse metallic pigments directly into the paper fibers while simultaneously raising customized crests, logos, and typographic elements. This sophisticated finishing technique creates a striking, multi-sensory visual contrast against velvety matte lamination backgrounds, instantly elevating ordinary paper products into opulent, collectible artifacts of prestige and distinction.</p>
+                </div>
+            </div>
+
+            <!-- 10 -->
+            <div class="info-card" onclick="zoomCard(this)">
+                <span class="card-number">10</span>
+                <div>
+                    <h3>10. Spot UV Varnishing & <span>Surface Gloss Dynamics</span></h3>
+                    <p>Elevating printed graphics from ordinary to extraordinary requires sophisticated surface contrast and textural variation. Print Press operates advanced UV varnishing and coating units that apply liquid polymer layers onto targeted graphical zones before instantly curing them under intense ultraviolet light arrays. This process allows us to create stunning visual interplay by contrasting velvety soft-touch matte lamination fields with glossy, raised UV highlights over specific logotypes, photographic elements, or typographic headers. Beyond its undeniable aesthetic appeal, the cured UV layer provides a highly resilient protective shield that guards underlying inks against fingerprint smudges, moisture exposure, and surface abrasion. It is an indispensable finishing touch for high-end business cards, restaurant menu covers, and presentation folder exteriors.</p>
+                </div>
+            </div>
+
+            <!-- 11 -->
+            <div class="info-card" onclick="zoomCard(this)">
+                <span class="card-number">11</span>
+                <div>
+                    <h3>11. Comprehensive Paper Stock <span>& Substrate Selection</span></h3>
+                    <p>The foundation of exquisite print execution begins with selecting the ideal paper stock and physical substrate tailored to each specific project's functional and aesthetic demands. Print Press maintains an extensive, climate-controlled warehousing facility stocked with hundreds of diverse paper grades sourced directly from premier international and domestic paper mills. Our inventory encompasses premium Maplitho bond papers, gloss and matte art sheets ranging from 90 GSM to 350 GSM, textured European parchment cards, recycled kraft brown boards, metallic shimmer cardstocks, synthetic tear-resistant Tyvek papers, and self-adhesive vinyl rolls. Whether a client requires lightweight carbonless paper for multi-copy invoice books or rigid greyboards for luxury rigid gift boxes, our material experts guide them toward the optimal substrate that guarantees superior ink absorption and structural longevity.</p>
+                </div>
+            </div>
+
+            <!-- 12 -->
+            <div class="info-card" onclick="zoomCard(this)">
+                <span class="card-number">12</span>
+                <div>
+                    <h3>12. Eco-Friendly Inks & <span>Sustainable Operations</span></h3>
+                    <p>As a responsible industrial enterprise deeply rooted in the pristine Himalayan ecology of Shopian, Print Press is passionately committed to maintaining environmentally sustainable production practices. We have systematically transitioned our entire offset and digital printing workflows toward eco-friendly, biodegradable vegetable-oil-based inks and water-based coatings that emit minimal volatile organic compounds (VOCs). Furthermore, all paper trimming scraps, corrugated offcuts, and metal CTP printing plates are systematically collected, sorted, and routed to certified recycling facilities to achieve near-zero production waste. Our conscientious operational model ensures that local schools, government bodies, and environmentally conscious corporations can procure massive print inventories with absolute confidence, knowing their procurement practices actively support ecological preservation and sustainable manufacturing ethics.</p>
+                </div>
+            </div>
+
+            <!-- 13 -->
+            <div class="info-card" onclick="zoomCard(this)">
+                <span class="card-number">13</span>
+                <div>
+                    <h3>13. Rigorous Multi-Stage Quality <span>Control Inspection</span></h3>
+                    <p>Quality assurance at Print Press is not treated as a final afterthought, but rather as an active, mandatory protocol embedded within every single phase of our manufacturing workflow. Prior to commencing any bulk print run, master digital proofs undergo meticulous color calibration and typographic proofreading. During active offset and digital production, machine operators conduct continuous side-by-side visual inspections against master swatches to detect potential ink starvation, register drift, or streaking anomalies instantly. Following cutting, folding, and binding, dedicated quality control inspectors examine finished batches for page sequence integrity, spine squareness, corner crispness, and packaging cleanliness. Any defective item is immediately rejected and recycled. This uncompromising multi-stage inspection regime guarantees that our clients in Shopian receive flawless, publication-grade products every single time.</p>
+                </div>
+            </div>
+
+            <!-- 14 -->
+            <div class="info-card" onclick="zoomCard(this)">
+                <span class="card-number">14</span>
+                <div>
+                    <h3>14. Timely Delivery Guarantee & <span>Logistics Coordination</span></h3>
+                    <p>In the fast-paced commercial and educational sectors of Jammu & Kashmir, strict adherence to delivery schedules is paramount for operational success. Print Press operates under a stringent Timely Delivery Guarantee, backed by an optimized production scheduling system and a dedicated logistics dispatch team. We fully understand the critical nature of time-sensitive consignments—such as school examination answer booklets required before test dates, conference handbooks needed for morning seminars, or festival packaging boxes slated for retail launch. By maintaining redundant machine capacities, round-the-clock shift flexibility when necessary, and established partnerships with reliable regional transport carriers, we ensure that every client's cargo is securely packaged, professionally labeled, and delivered directly to their doorstep strictly on or ahead of schedule.</p>
+                </div>
+            </div>
+
+            <!-- 15 -->
+            <div class="info-card" onclick="zoomCard(this)">
+                <span class="card-number">15</span>
+                <div>
+                    <h3>15. Transparent Wholesale Pricing <span>& Economic Value</span></h3>
+                    <p>Financial transparency and equitable pricing structures form the cornerstone of Print Press’s enduring commercial relationships across Shopian and surrounding districts. We firmly reject deceptive quoting practices, hidden setup fees, or unexpected post-production surcharges. Every prospective client receives a comprehensive, itemized quotation detailing exact paper grammage, plate costs, finishing variables, and volume-tiered discounts upfront. By leveraging our massive raw material purchasing power, optimizing machine utilization, and eliminating unnecessary bureaucratic intermediaries, we pass significant cost savings directly onto our patrons. This transparent wholesale pricing model enables small retail startups, emerging local artists, and large institutional buyers alike to execute ambitious marketing campaigns without straining their operational budgets.</p>
+                </div>
+            </div>
+
+            <!-- 16 -->
+            <div class="info-card" onclick="zoomCard(this)">
+                <span class="card-number">16</span>
+                <div>
+                    <h3>16. Dedicated In-House Graphic <span>Design Studio</span></h3>
+                    <p>Transforming a vague conceptual idea into a stunning, print-ready digital artwork requires exceptional creative talent and technical pre-press expertise. Print Press houses a fully equipped, dedicated in-house graphic design studio staffed by seasoned digital artists and typography specialists proficient in industry-standard design software suites. Whether a client arrives with a rough hand-drawn sketch on a napkin or an established corporate brand guideline that requires sophisticated adaptation across diverse physical formats, our design team collaborates closely with them from concept inception to final pre-press proofing. We ensure optimal color profiles (CMYK), correct bleed dimensions, safe margin alignments, and high-resolution image rasterization, guaranteeing that the physical printed output mirrors the digital vision with breathtaking fidelity and artistic brilliance.</p>
+                </div>
+            </div>
+
+            <!-- 17 -->
+            <div class="info-card" onclick="zoomCard(this)">
+                <span class="card-number">17</span>
+                <div>
+                    <h3>17. Custom Fruit Box Labeling & <span>Apple Packaging Solutions</span></h3>
+                    <p>As an agricultural heartland renowned globally for its magnificent apple orchards, Shopian requires specialized packaging and labeling solutions engineered to withstand extreme cold storage, moisture condensation, and rugged long-distance transport. Print Press is exceptionally proud to serve the Kashmir Apple Growers Association and hundreds of individual orchard owners by manufacturing high-volume fruit box packaging labels, waterproof adhesive sticker rolls, tamper-evident hologram seals, and corrugated carton branding graphics. Our specialized label stocks feature aggressive permanent adhesives and moisture-resistant polymer coatings that remain firmly bonded to wooden and cardboard fruit crates even when subjected to sub-zero refrigeration and heavy humidity during transit to national horticultural markets.</p>
+                </div>
+            </div>
+
+            <!-- 18 -->
+            <div class="info-card" onclick="zoomCard(this)">
+                <span class="card-number">18</span>
+                <div>
+                    <h3>18. Institutional Partnerships with <span>Schools & Universities</span></h3>
+                    <p>Education is the bedrock of societal advancement, and Print Press maintains deep-rooted, long-standing institutional partnerships with dozens of prestigious public schools, private academies, and degree colleges across Jammu & Kashmir. We serve as their comprehensive annual printing partner, supplying an extensive inventory of customized academic student diaries, fee collection receipt books, examination answer booklets, graduation certificate scrolls, student PVC identity cards, library member registers, and teacher lesson planners. Our educational print products are engineered to endure heavy academic usage throughout rigorous school sessions while maintaining immaculate structural legibility. We take immense pride in supporting academic institutions by delivering reliable, publication-grade stationery that fosters structured learning environments.</p>
+                </div>
+            </div>
+
+            <!-- 19 -->
+            <div class="info-card" onclick="zoomCard(this)">
+                <span class="card-number">19</span>
+                <div>
+                    <h3>19. Commercial Banking & <span>Corporate Stationery Solutions</span></h3>
+                    <p>Corporate professionalism is vividly communicated through the tangible quality of an organization's official stationery and administrative documentation. Print Press collaborates extensively with regional commercial banks, cooperative credit societies, corporate headquarters, and insurance agencies to manufacture pristine executive letterheads, specialized DL mailing envelopes, tamper-proof security deposit slips, multi-copy audit ledger registers, and embossed executive presentation folders. Every corporate print run is executed using premium watermarked bond papers and razor-sharp offset typography that project absolute authority, regulatory compliance, and institutional trustworthiness. Our corporate clients rely on our unwavering discretion, secure handling of sensitive data files, and consistent brand color matching across all administrative print lines.</p>
+                </div>
+            </div>
+
+            <!-- 20 -->
+            <div class="info-card" onclick="zoomCard(this)">
+                <span class="card-number">20</span>
+                <div>
+                    <h3>20. Healthcare & Pharmaceutical <span>Printing Specialization</span></h3>
+                    <p>The medical and pharmaceutical sectors demand absolute precision, flawless legibility, and strict adherence to regulatory packaging standards. Print Press provides specialized printing services to regional hospitals, diagnostic laboratories, retail pharmacies, and clinical practitioners throughout Shopian. Our healthcare print catalog encompasses custom doctor prescription pads, multi-copy diagnostic laboratory report folders, patient admission record registers, medicine packaging cartons, pill bottle sticker labels, and tamper-evident prescription seal tapes. We utilize ultra-crisp offset and digital typography to ensure that critical dosage instructions, chemical compositions, and emergency contact details are rendered with absolute, unmistakable clarity to safeguard patient health and safety.</p>
+                </div>
+            </div>
+
+            <!-- 21 -->
+            <div class="info-card" onclick="zoomCard(this)">
+                <span class="card-number">21</span>
+                <div>
+                    <h3>21. Hospitality, Restaurant & <span>Cafe Print Menus</span></h3>
+                    <p>In the vibrant hospitality and culinary tourism sector of Kashmir, atmospheric presentation and tactile menu quality significantly influence guest dining satisfaction. Print Press designs and manufactures exquisite, heavy-duty waterproof thermal laminated restaurant food menus, table tent cards, bill presentation folders, custom coasters, and takeaway packaging sleeves for premier hotels, upscale restaurants, and cozy alpine cafes. Our specialized thermal lamination sealing completely protects paper menus against liquid spills, grease stains, and frequent guest handling while preserving stunning photographic food color vibrancy. These durable hospitality print assets help restaurant owners project an aura of immaculate hygiene, refined taste, and professional culinary excellence.</p>
+                </div>
+            </div>
+
+            <!-- 22 -->
+            <div class="info-card" onclick="zoomCard(this)">
+                <span class="card-number">22</span>
+                <div>
+                    <h3>22. Large-Format Outdoor Advertising & <span>Hoarding Mastery</span></h3>
+                    <p>Maximum brand visibility in competitive commercial landscapes requires bold, weather-resistant outdoor advertising collateral. Print Press operates advanced wide-format solvent and eco-solvent plotting machinery capable of producing massive, high-definition star flex hoardings, building wrap banners, backlit glow sign boards, retail shop fascia boards, and event backdrop displays. Utilizing heavy-duty scrim banner materials infused with UV-blocking pigment inks, our outdoor prints withstand harsh Himalayan winters, heavy snowfall, and intense summer ultraviolet radiation without fading, cracking, or tearing. These striking visual billboards provide local enterprises in Shopian with powerful, around-the-clock brand promotion across major municipal thoroughfares and national highways.</p>
+                </div>
+            </div>
+
+            <!-- 23 -->
+            <div class="info-card" onclick="zoomCard(this)">
+                <span class="card-number">23</span>
+                <div>
+                    <h3>23. Bespoke Luxury Wedding Invitation <span>Suites & Box Packaging</span></h3>
+                    <p>Weddings are momentous life celebrations where every single detail reflects family prestige and cultural grace. Print Press operates an exclusive wedding stationery design studio specializing in luxury invitation suites, royal laser-cut gift boxes, acrylic glass cards, embossed foil folders, and personalized guest favor tags. Working closely with families, our creative artisans curate bespoke thematic designs incorporating traditional Kashmiri motifs, intricate filigree laser cuts, and opulent metallic ribbon embellishments. Housed inside rigid velvet-lined presentation boxes, these breathtaking wedding suites serve as cherished keepsake announcements that set an unforgettable tone of elegance and regal celebration for guests.</p>
+                </div>
+            </div>
+
+            <!-- 24 -->
+            <div class="info-card" onclick="zoomCard(this)">
+                <span class="card-number">24</span>
+                <div>
+                    <h3>24. Retail Packaging & Rigid <span>Box Manufacturing</span></h3>
+                    <p>In contemporary retail markets, product packaging acts as the silent salesperson that captures consumer attention and communicates intrinsic value. Print Press manufactures custom rigid gift boxes, magnetic closure presentation boxes, apparel folding cartons, cosmetic product containers, and rigid sweet boxes for diverse retail merchants. Constructed using heavy-duty 1200 GSM greyboard wrapped in luxurious art papers with matte lamination and foil stamping, our rigid packaging solutions provide exceptional structural protection while exuding high-end retail appeal. These sophisticated packaging lines empower local boutique owners and food artisans in Shopian to merchandise their products with world-class shelf presence.</p>
+                </div>
+            </div>
+
+            <!-- 25 -->
+            <div class="info-card" onclick="zoomCard(this)">
+                <span class="card-number">25</span>
+                <div>
+                    <h3>25. Government, Municipal & <span>Civic Administrative Print</span></h3>
+                    <p>Administrative transparency, civic organization, and public communication rely heavily on standardized, secure government printing services. Print Press is honored to assist local municipal bodies, public sector offices, civil administration departments, and electoral agencies by executing secure administrative forms, census survey registers, public awareness campaign flex banners, official notification posters, and serialized receipt pads. Our secure workflow protocols ensure absolute confidentiality, strict serial tracking, and immutable typographic accuracy for all civic documentation. We take immense civic pride in facilitating smooth public administration across the Shopian district through dependable, high-precision official publishing support.</p>
+                </div>
+            </div>
+
+            <!-- 26 -->
+            <div class="info-card" onclick="zoomCard(this)">
+                <span class="card-number">26</span>
+                <div>
+                    <h3>26. Custom Adhesive Stickers, Decals & <span>Roll Label Printing</span></h3>
+                    <p>Adhesive product labeling is an essential merchandising tool across retail, food, cosmetic, and industrial logistics sectors. Print Press operates high-speed die-cut sticker printing presses capable of producing thousands of custom-shaped paper stickers, waterproof vinyl decals, tamper-evident security seals, and thermal barcode sticker rolls daily. Utilizing advanced digital kiss-cutting plotters, we can manufacture stickers in precise circular, rectangular, starburst, or complex custom die-cut geometries tailored to match exact product container contours. Backed by aggressive permanent rubber and acrylic adhesives, our label solutions adhere flawlessly to glass, plastic, metal, and cardboard packaging surfaces under demanding environmental conditions.</p>
+                </div>
+            </div>
+
+            <!-- 27 -->
+            <div class="info-card" onclick="zoomCard(this)">
+                <span class="card-number">27</span>
+                <div>
+                    <h3>27. Event Planning, Exhibition & <span>Seminar Collateral</span></h3>
+                    <p>Successful professional conferences, cultural festivals, and corporate exhibitions require synchronized, beautifully branded event collateral. Print Press partners with professional event planners and institutional organizers to supply comprehensive event kits comprising retractable aluminum roll-up standees, branded fabric neck lanyards, PVC visitor badge passes, serialized entry wristbands, seminar participant folder kits, schedule program booklets, table nameplates, and large stage backdrop banners. Our synchronized event print production guarantees absolute typographic and chromatic harmony across all visual touchpoints, helping organizers project immaculate professionalism and effortless logistical control throughout their gatherings.</p>
+                </div>
+            </div>
+
+            <!-- 28 -->
+            <div class="info-card" onclick="zoomCard(this)">
+                <span class="card-number">28</span>
+                <div>
+                    <h3>28. NGO, Social Welfare & Non-Profit <span>Awareness Publishing</span></h3>
+                    <p>Non-governmental organizations, charitable trusts, and social welfare societies rely heavily on persuasive print media to educate communities and mobilize philanthropic support. Print Press actively collaborates with regional NGOs across Jammu & Kashmir by supplying subsidized annual report booklets, donation receipt books, community health awareness campaign banners, informative pamphlet flyers, and volunteer identification badges. We deeply respect the noble missions of social welfare organizations and take pride in contributing to their community outreach initiatives by delivering impactful, visually compelling awareness media produced at highly economical, supportive pricing tiers.</p>
+                </div>
+            </div>
+
+            <!-- 29 -->
+            <div class="info-card" onclick="zoomCard(this)">
+                <span class="card-number">29</span>
+                <div>
+                    <h3>29. Sports Academy, Tournament & <span>Athletic Club Branding</span></h3>
+                    <p>Athletic competition and sports academies thrive on energetic branding, team spirit, and professional tournament organization. Print Press supports local football academies, cricket clubs, martial arts dojos, and athletic tournament committees by manufacturing custom championship winning certificates, flex tournament schedule banners, team jersey screen-printed sponsor logos, participant accreditation badges, and winner trophy engraving plates. Our vibrant, high-energy print designs capture the dynamic spirit of athletic competition, inspiring youth participation and fostering strong community engagement across Shopian's sporting arenas.</p>
+                </div>
+            </div>
+
+            <!-- 30 -->
+            <div class="info-card" onclick="zoomCard(this)">
+                <span class="card-number">30</span>
+                <div>
+                    <h3>30. Textile, Apparel & Garment <span>Industry Tagging Solutions</span></h3>
+                    <p>The booming textile and apparel manufacturing sector requires specialized product tagging and brand identification accessories. Print Press manufactures high-end garment swing hang tags printed on thick 350 GSM matte laminated boards, woven clothing brand labels, size indicator stickers, fabric care instruction labels, and custom-printed polyethylene apparel packaging bags for boutique designers and tailoring studios. Our precision die-punching and eyelet-reinforcement techniques ensure that apparel tags possess clean suspension holes and luxurious tactile finishes that elevate retail garment presentation and reinforce premium brand positioning in competitive fashion markets.</p>
+                </div>
+            </div>
+
+            <!-- 31 -->
+            <div class="info-card" onclick="zoomCard(this)">
+                <span class="card-number">31</span>
+                <div>
+                    <h3>31. Automotive Showroom & Transport <span>Service Stationery</span></h3>
+                    <p>Automobile dealerships, vehicle service centers, and transport contractors require specialized administrative forms and customer retention stationery. Print Press supplies comprehensive print packages encompassing vehicle service reminder static-cling window stickers, multi-copy job card repair sheets, official warranty registration booklets, executive automobile brochures, and branded customer key-delivery pouches. Our durable, grease-resistant service logs and precision-printed administrative pads streamline workshop management and elevate customer ownership experiences across regional automobile showrooms and maintenance facilities.</p>
+                </div>
+            </div>
+
+            <!-- 32 -->
+            <div class="info-card" onclick="zoomCard(this)">
+                <span class="card-number">32</span>
+                <div>
+                    <h3>32. Real Estate Agency & Construction <span>Site Signage</span></h3>
+                    <p>Property developers, real estate brokers, and civil construction firms rely on heavy-duty outdoor signage and executive marketing collateral to attract investors. Print Press manufactures weather-resistant site boundary flex banners, property brochure folders, architectural plan presentation booklets, metal keychains for property handovers, and executive gold-foil business cards for real estate professionals. Our robust outdoor vinyl and star flex prints withstand aggressive construction site environments while projecting upscale luxury and architectural reliability to prospective property buyers.</p>
+                </div>
+            </div>
+
+            <!-- 33 -->
+            <div class="info-card" onclick="zoomCard(this)">
+                <span class="card-number">33</span>
+                <div>
+                    <h3>33. Bakery, Confectionery & Food <span>Packaging Graphics</span></h3>
+                    <p>Artisanal bakeries, patisseries, and sweet manufacturers require delightful, food-safe packaging graphics that stimulate appetite and communicate freshness. Print Press produces custom cake boxes, transparent jar sticker labels, pastry window cartons, cupcake insert trays, and decorative bakery carrier bags featuring mouth-watering full-color graphic printing and grease-resistant lamination barriers. Our food-grade packaging solutions ensure absolute hygienic compliance while charming retail customers with irresistible visual allure and professional pastry presentation standards.</p>
+                </div>
+            </div>
+
+            <!-- 34 -->
+            <div class="info-card" onclick="zoomCard(this)">
+                <span class="card-number">34</span>
+                <div>
+                    <h3>34. Judiciary, Law Firm & Legal <span>Document Binding</span></h3>
+                    <p>The legal profession demands absolute typographic precision, archival-grade paper permanence, and secure formal binding standards. Print Press assists local advocates, law firms, and judicial administrative offices by executing formal legal brief printing, court submission document binding, embossed hardcase register printing, and confidential file folder manufacturing. Utilizing acid-free archival bond papers and robust sewn binding techniques, we ensure that vital legal records and case files remain perfectly preserved, immaculately legible, and fully compliant with judicial archiving mandates over decades of professional reference.</p>
+                </div>
+            </div>
+
+            <!-- 35 -->
+            <div class="info-card" onclick="zoomCard(this)">
+                <span class="card-number">35</span>
+                <div>
+                    <h3>35. Agriculture, Horticulture & Farm <span>Produce Labeling</span></h3>
+                    <p>Beyond apple orchard packaging, the broader agricultural and horticultural sectors require specialized administrative and product identification print media. Print Press supplies plant nursery labeling stakes, organic fertilizer packaging bag stickers, greenhouse crop monitoring registers, cold-storage inventory logs, and wholesale produce auction slip pads for regional farmers, agricultural cooperatives, and plant nurseries. Our specialized agricultural print products withstand high humidity, soil contact, and chemical fertilizer exposure while providing essential tracking data for modern farm management.</p>
+                </div>
+            </div>
+
+            <!-- 36 -->
+            <div class="info-card" onclick="zoomCard(this)">
+                <span class="card-number">36</span>
+                <div>
+                    <h3>36. Library, Archival & Museum <span>Cataloging Stationery</span></h3>
+                    <p>Public libraries, academic reading rooms, and regional archives require specialized cataloging stationery and preservation supplies. Print Press manufactures library member registration books, book spine barcode label rolls, due-date stamping slip inserts, archival storage box identification tags, and reading room visitor log registers. Our archival-grade printing materials resist yellowing and ink migration, ensuring that priceless literary collections and historical documents maintain organized classification and pristine administrative records across generations of scholarly research.</p>
+                </div>
+            </div>
+
+            <!-- 37 -->
+            <div class="info-card" onclick="zoomCard(this)">
+                <span class="card-number">37</span>
+                <div>
+                    <h3>37. Handicraft, Artisan & Traditional <span>Artifact Branding</span></h3>
+                    <p>Kashmir’s legendary handicraft industry—encompassing pashmina shawls, handmade carpets, walnut wood carvings, and copperware—relies on sophisticated storytelling and brand authenticity labeling. Print Press produces woven silk brand labels, handmade paper authenticity certificates, artisan biography booklet inserts, and luxury gift packaging boxes for traditional handicraft exporters. Our exquisite print media highlights the unmatched heritage, generational skill, and authentic provenance of Kashmiri artistry, empowering local artisans to command premium valuation in international export markets.</p>
+                </div>
+            </div>
+
+            <!-- 38 -->
+            <div class="info-card" onclick="zoomCard(this)">
+                <span class="card-number">38</span>
+                <div>
+                    <h3>38. Optical Shop, Eyewear & Vision <span>Care Stationery</span></h3>
+                    <p>Optometry clinics and eyewear retail boutiques require specialized clinical stationery and branded protective accessories. Print Press supplies custom optometrist prescription pads, microfiber cleaning cloth pouches printed with brand logos, hard spectacle case branding stickers, lens cleaning spray bottle labels, and appointment reminder cards. These refined optical print items reinforce professional clinical expertise while delivering cohesive brand touchpoints that encourage patient loyalty and optical store recall.</p>
+                </div>
+            </div>
+
+            <!-- 39 -->
+            <div class="info-card" onclick="zoomCard(this)">
+                <span class="card-number">39</span>
+                <div>
+                    <h3>39. Fitness Center, Gym & Wellness <span>Studio Promotion</span></h3>
+                    <p>Health clubs, fitness centers, and yoga wellness studios require high-energy promotional media and member management stationery. Print Press manufactures PVC membership ID smart cards, workout schedule tracking cards, protein shaker bottle waterproof sticker labels, promotional fitness flyer leaflets, and large motivational wall graphic posters. Our dynamic, high-contrast print designs inspire athletic dedication and project professional wellness standards that motivate gym members and accelerate fitness club membership enrollment.</p>
+                </div>
+            </div>
+
+            <!-- 40 -->
+            <div class="info-card" onclick="zoomCard(this)">
+                <span class="card-number">40</span>
+                <div>
+                    <h3>40. Travel Agency, Tourism & Hotel <span>Booking Documentation</span></h3>
+                    <p>The vibrant tourism and hospitality sector across Kashmir relies on immaculate travel documentation and alluring promotional brochures. Print Press supplies custom travel itinerary booklet folders, multi-language tourist map brochures, hotel luggage tag stickers, luxury resort welcome letterheads, and corporate tour operator visiting cards. Our stunning photographic reproduction and durable binding standards help tourism enterprises showcase the majestic natural beauty of J&K while providing travelers with seamless, elegant logistical documentation.</p>
+                </div>
+            </div>
+
+            <!-- 41 -->
+            <div class="info-card" onclick="zoomCard(this)">
+                <span class="card-number">41</span>
+                <div>
+                    <h3>41. Electronics, Appliance & Hardware <span>Warranty Documentation</span></h3>
+                    <p>Retail electronics stores and hardware showrooms require secure warranty cards, product instruction manuals, and serial-numbered guarantee stickers. Print Press manufactures multi-language appliance instruction booklets, foil-stamped warranty registration cards, tamper-evident repair seal stickers, and serialized store policy display boards. Our durable, scuff-resistant print solutions ensure that vital warranty terms and safety warnings remain perfectly legible throughout extended product operational lifespans.</p>
+                </div>
+            </div>
+
+            <!-- 42 -->
+            <div class="info-card" onclick="zoomCard(this)">
+                <span class="card-number">42</span>
+                <div>
+                    <h3>42. Petrol Pump, Fuel Station & Lubricant <span>Administrative Forms</span></h3>
+                    <p>Automobile fuel retail stations and petroleum distribution outlets require specialized daily sales registers, credit customer billing slips, and safety compliance warning signage. Print Press supplies serialized daily shift cash reconciliation pads, commercial fuel supply challan books, hazardous material warning adhesive decals, and uniform branding patches for regional petrol pump operators. Our grease-resistant, heavy-duty paper stocks ensure reliable administrative record-keeping under demanding fuel-retail environments.</p>
+                </div>
+            </div>
+
+            <!-- 43 -->
+            <div class="info-card" onclick="zoomCard(this)">
+                <span class="card-number">43</span>
+                <div>
+                    <h3>43. Courier, Logistics & Cargo <span>Consignment Stationery</span></h3>
+                    <p>Express courier services and cargo freight forwarders rely on multi-copy consignment note books, fragile handling warning tape rolls, and address label pouches. Print Press manufactures serialized Waybill carbonless receipt books, heavy-duty carton warning placards, and thermal barcode tracking labels for regional logistics operators. Our ultra-sharp carbonless copying and tear-resistant paper grades ensure flawless tracking data duplication across rigorous multi-stop freight transit networks.</p>
+                </div>
+            </div>
+
+            <!-- 44 -->
+            <div class="info-card" onclick="zoomCard(this)">
+                <span class="card-number">44</span>
+                <div>
+                    <h3>44. Photography Studio, Album Binding & <span>Glossy Photo Printing</span></h3>
+                    <p>Professional photography studios capturing weddings and family milestones require exquisite album printing and glossy portrait enlargement services. Print Press supplies hardbound panoramic photo album covers, UV-protected glossy photographic prints, portfolio presentation boxes, and custom studio watermarked packaging bags. Our advanced color calibration technology ensures absolute skin-tone accuracy and archival permanence, preserving cherished life memories in breathtaking high-definition clarity.</p>
+                </div>
+            </div>
+
+            <!-- 45 -->
+            <div class="info-card" onclick="zoomCard(this)">
+                <span class="card-number">45</span>
+                <div>
+                    <h3>45. Computer Training Institute & Coaching <span>Academy Collateral</span></h3>
+                    <p>Educational coaching centers, computer training institutes, and skill development academies require course completion certificates, student ID cards, and study material manuals. Print Press manufactures serialized admission form pads, laminated course syllabus wall charts, spiral-bound technical training manuals, and gold-foiled graduation award plaques. Our professional educational stationery empowers coaching institutes to project absolute academic rigor and institutional credibility.</p>
+                </div>
+            </div>
+
+            <!-- 46 -->
+            <div class="info-card" onclick="zoomCard(this)">
+                <span class="card-number">46</span>
+                <div>
+                    <h3>46. Florist, Nursery & Botanical <span>Plant Care Tagging</span></h3>
+                    <p>Plant nurseries, botanical gardens, and floral boutiques require waterproof plant care tags, flower bouquet wrapping paper, and decorative ribbon branding. Print Press supplies synthetic Tyvek hanging loop tags, moisture-resistant price labeling stakes, and elegant floral shop carry bags. Our weather-resistant horticultural print solutions withstand greenhouse watering systems and outdoor weather exposure while maintaining pristine botanical categorization and pricing clarity.</p>
+                </div>
+            </div>
+
+            <!-- 47 -->
+            <div class="info-card" onclick="zoomCard(this)">
+                <span class="card-number">47</span>
+                <div>
+                    <h3>47. Tailoring, Boutique & Custom <span>Drapery Measurement Pads</span></h3>
+                    <p>Custom tailoring studios, fashion designers, and drapery ateliers require specialized client measurement order pads and suit cover garment bags. Print Press manufactures duplicate measurement slip pads featuring detailed anatomical dimension charts, garment pickup receipt tickets, and branded suit garment cover bags. Our compact, well-structured tailoring pads streamline custom fitting consultations and enhance operational organization across busy fashion studios.</p>
+                </div>
+            </div>
+
+            <!-- 48 -->
+            <div class="info-card" onclick="zoomCard(this)">
+                <span class="card-number">48</span>
+                <div>
+                    <h3>48. Security Agency, Guard Force & <span>Visitor Pass Management</span></h3>
+                    <p>Private security firms, gated residential communities, and corporate office parks require secure visitor pass booklets and guard duty roster pads. Print Press manufactures serialized visitor badge slips, security guard photo ID cards, vehicle parking authorization passes, and multi-copy gate-pass register books. Our secure, tamper-resistant administrative print media facilitates rigorous facility access control and professional security management.</p>
+                </div>
+            </div>
+
+            <!-- 49 -->
+            <div class="info-card" onclick="zoomCard(this)">
+                <span class="card-number">49</span>
+                <div>
+                    <h3>49. Book Publisher, Author & Literary <span>Publication Services</span></h3>
+                    <p>Independent authors, academic researchers, and regional book publishing houses rely on Print Press for comprehensive literary publication execution. We offer complete publication packages encompassing interior typesetting, ISBN barcode generation, cover graphic design, thermal softcover perfect binding, hardcover Smyth-sewn binding, and author promotional bookmark printing. We take immense pride in giving physical form to literary works, empowering authors across J&K to share their stories with the world.</p>
+                </div>
+            </div>
+
+            <!-- 50 -->
+            <div class="info-card" onclick="zoomCard(this)">
+                <span class="card-number">50</span>
+                <div>
+                    <h3>50. Future Technological Innovations & <span>Sustainable Growth Horizon</span></h3>
+                    <p>As Print Press looks toward the future, our steadfast commitment to technological innovation, environmental sustainability, and uncompromising craftsmanship remains stronger than ever. We are actively expanding our production infrastructure to incorporate smart NFC-embedded packaging tags, 100% tree-free agricultural residue paper stocks, and automated robotic bindery systems. By continuously anticipating the evolving commercial and digital publishing demands of Jammu & Kashmir, Faizan and our expert team ensure that Print Press remains the undisputed vanguard of print excellence, empowering local enterprises to achieve extraordinary success for decades to come.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Zoom Overlay Structure -->
+    <div class="zoom-overlay" id="zoomOverlay" onclick="closeZoom(event)">
+        <div class="zoomed-card" id="zoomedCard">
+            <div class="star-container"></div>
+            <div class="close-zoom" onclick="closeZoomDirect()">×</div>
+            <div id="zoomedContent"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="contact-info">
+            <p>📧 <strong>Email:</strong> faizan@printpress.com</p>
+            <p>📞 <strong>Phone:</strong> +91 9149762843</p>
+            <p>📍 <strong>Location:</strong> Main Market, Shopian, Jammu & Kashmir</p>
+        </div>
+        <div class="footer-nav">
+            <a href="index.html">🏠 Home</a>
+            <a href="services.html">⚙️ Services</a>
+            <a href="printing-rate-list.html">📋 Printing Rate List</a>
+            <a href="contact.html">📞 Contact</a>
+            <a href="address.html">📍 Address</a>
+        </div>
+        <div class="copyright">
+            <div class="footer-bottom-credit" style="text-align: center; margin-top: 15px; font-size: 13px; color: var(--text-muted);">
+                Designed by <a href="[Aapka-Portfolio-Link]" target="_blank" style="color: var(--accent-gold); text-decoration: none; font-weight: 600;">ISHTIYAQ GULZAR</a> | 
+                <span class="social-icons" style="margin-left: 10px; display: inline-flex; gap: 15px; vertical-align: middle;">
+                    <a href="https://www.instagram.com/jaani_927/" target="_blank" title="Instagram" style="color: var(--text-main); font-size: 16px; text-decoration: none; transition: color 0.3s;"><i class="fab fa-instagram"></i> Instagram</a>
+                    <a href="https://www.facebook.com/bhat.ishtiyaq.737" target="_blank" title="Facebook" style="color: var(--text-main); font-size: 16px; text-decoration: none; transition: color 0.3s;"><i class="fab fa-facebook"></i> Facebook</a>
+                    <a href="https://wa.me/9149604818" target="_blank" title="WhatsApp" style="color: var(--text-main); font-size: 16px; text-decoration: none; transition: color 0.3s;"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                </span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu(event) {
+            if (event) event.stopPropagation();
+            var menu = document.getElementById("nav-menu");
+            menu.classList.toggle("active");
+        }
+
+        function zoomCard(cardElement) {
+            var overlay = document.getElementById("zoomOverlay");
+            var contentDiv = document.getElementById("zoomedContent");
+            contentDiv.innerHTML = cardElement.innerHTML;
+            overlay.classList.add("active");
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeZoomDirect() {
+            var overlay = document.getElementById("zoomOverlay");
+            overlay.classList.remove("active");
+            document.body.style.overflow = "auto";
+        }
+
+        function closeZoom(event) {
+            if (event.target.id === "zoomOverlay") {
+                closeZoomDirect();
+            }
+        }
+
+        // Close menu automatically when clicking outside anywhere on the page
+        document.addEventListener("click", function(event) {
+            var menu = document.getElementById("nav-menu");
+            var menuIcon = document.querySelector(".menu-icon");
+            var banner = document.querySelector(".attention-banner");
+            
+            if (menu.classList.contains("active")) {
+                if (!menu.contains(event.target) && event.target !== menuIcon && event.target !== banner) {
+                    menu.classList.remove("active");
+                }
+            }
+        });
+    </script>
+</body>
+</html>
